@@ -1,7 +1,24 @@
-const MenuList = ["Menu1", "Menu2", "Menu3"];
-var MenuElement = document.querySelector("#menu");
-if (MenuElement) {
-  for (let i = 0; i < MenuList.length; i++) {
-    MenuElement.innerHTML += `<li class="bg-red-500">${MenuList[i]}</li>`;
-  }
-}
+import Navigo from "navigo";
+import AboutPage from "./pages/about";
+import HomePage from "./pages/home";
+
+const router = new Navigo("/");
+const render = (content) => {
+	document.getElementById("app").innerHTML = content.print();
+};
+
+router.on({
+	"/": () => {
+		render(HomePage);
+	},
+
+	"/about": () => {
+		render(AboutPage);
+	},
+
+	"/lab1": () => {
+		render();
+	},
+});
+
+router.resolve();
