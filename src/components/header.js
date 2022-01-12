@@ -7,11 +7,9 @@ const Header = {
         <div class="bg-[#c87903]">
             <div class="flex justify-between items-center mx-2">
                   <ul class="">
-                    <li class="inline-block mx-3 "><a href="#" class="block text-white py-3 hover:underline">Trang Chủ</a></li>
-                    <li class="inline-block mx-3"><a href="#" class="block text-white py-3 hover:underline">Tuyển Sinh</a></li>
-                    <li class="inline-block mx-3"><a href="#" class="block text-white py-3 hover:underline">Chương Trình Đào Tạo</a></li>
-                    <li class="inline-block mx-3"><a href="#" class="block text-white py-3 hover:underline">Góc Sinh Viên</a></li>
-                    <li class="inline-block mx-3"><a href="#" class="block text-white py-3 hover:underline">Tuyển dụng</a></li>
+                    <li class="inline-block mx-3 "><a href="/" class="block text-white py-3 hover:underline">HomePage</a></li>
+                    <li class="inline-block mx-3"><a href="/about" class="block text-white py-3 hover:underline">About</a></li>
+                    <li class="inline-block mx-3"><a href="/detailnews" class="block text-white py-3 hover:underline">DetailNews</a></li>
                   </ul>
                   <form  class="">
                         <input type="text">

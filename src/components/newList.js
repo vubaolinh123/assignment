@@ -9,8 +9,8 @@ const NewList = {
 		.map(function (post) {
 			return /*html*/ `
           <div class="border border-black p-4">
-              <a href="#"><img src="${post.img}" alt="" class="w-max"></a>
-              <span class="text-orange-400 font-bold my-2 block">${post.tittle}</span>
+              <a href="news/${post.id}"><img src="${post.img}" alt="" class="w-max"></a>
+              <span class="text-orange-400 font-bold my-2 block">${post.title}</span>
               <p class="">${post.desc}</p>
           </div>
           `;
@@ -23,8 +23,8 @@ const NewList = {
 					.map(function (post) {
 						return /*html*/ `
           <div class="border border-black p-4">
-              <a href="#"><img src="${post.img}" alt="" class="w-max"></a>
-              <span class="text-orange-400 font-bold my-2 block">${post.tittle}</span>
+              <a href="news/${post.id}"><img src="${post.img}" alt="" class="w-max"></a>
+              <span class="text-orange-400 font-bold my-2 block">${post.title}</span>
               <p class="">${post.desc}</p>
           </div>
           `;
