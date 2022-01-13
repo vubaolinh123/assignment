@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-    <link rel="stylesheet" href="./style.css">
-  </head>
-  <body>
-    <div class="max-w-5xl m-auto ">
-                    <header>
-                        <div class="bg-[#272f54] py-5">
-          <img src="https://i.imgur.com/BPvFtRD.jpg" alt="" class="m-auto">
-        </div>
-        <div class="bg-[#c87903]">
-            <div class="flex justify-between items-center mx-2">
-                  <ul class="">
-                    <li class="inline-block mx-3 "><a href="/" class="block text-white py-3 hover:underline">HomePage</a></li>
-                    <li class="inline-block mx-3"><a href="/about" class="block text-white py-3 hover:underline">About</a></li>
-                    <li class="inline-block mx-3"><a href="/news" class="block text-white py-3 hover:underline">DetailNews</a></li>
-                  </ul>
-                  <form  class="">
-                        <input type="text">
-                        <a href="#" class="text-white bg-[#272f54] border border-white px-3">Tìm Kiếm</a>
-                  </form>
-            </div>
-        </div>
-                    </header>
-                <div class="banner my-3">
-                        <img src="https://i.imgur.com/FSz2VuZ.jpg" alt="">
-                </div>
-                <div id="app">
-                        
-                </div>
-                <footer class="bg-[#272f54] text-center ">
-                        <span class="text-white block py-3 font-bold">Link</span>
-                </footer>
-            </div>
-    <script type="module" src="./src/main.js"></script>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Vite App</title>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+		/>
+		<link
+			href="https://afeld.github.io/emoji-css/emoji.css"
+			rel="stylesheet"
+		/>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"
+			integrity="sha256-xKeoJ50pzbUGkpQxDYHD7o7hxe0LaOGeguUidbq6vis="
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="max-w-5xl m-auto">
+			<header id="header"></header>
+			<div class="my-3" id="banner"></div>
+			<div id="app"></div>
+			<footer class="bg-[#272f54] text-center" id="footer"></footer>
+		</div>
+		<script type="module" src="./src/main.js"></script>
+	</body>
 </html>

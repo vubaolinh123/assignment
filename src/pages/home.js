@@ -5,11 +5,7 @@ import NewList from "../components/newList";
 
 const HomePage = {
 	print() {
-		return /*html*/ ` 
-                <main class="my-2">
-                        ${NewList.printf()}
-                </main>
-        `;
+		return /*html*/ ` ${NewList.printf()} `;
 	},
 };
 

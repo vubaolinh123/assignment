@@ -9,7 +9,9 @@ const Header = {
                   <ul class="">
                     <li class="inline-block mx-3 "><a href="/" class="block text-white py-3 hover:underline">HomePage</a></li>
                     <li class="inline-block mx-3"><a href="/about" class="block text-white py-3 hover:underline">About</a></li>
-                    <li class="inline-block mx-3"><a href="/detailnews" class="block text-white py-3 hover:underline">DetailNews</a></li>
+                    <li class="inline-block mx-3"><a href="/signup" class="block text-white py-3 hover:underline">SignUp</a></li>
+                    <li class="inline-block mx-3"><a href="/signin" class="block text-white py-3 hover:underline">SignIn</a></li>
+                    <li class="inline-block mx-3"><a href="/admin/dashboard/" class="block text-white py-3 hover:underline">Admin</a></li>
                   </ul>
                   <form  class="">
                         <input type="text">
