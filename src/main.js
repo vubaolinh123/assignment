@@ -9,6 +9,7 @@ import HomePage from "./pages/home";
 import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
 import addNews from "./pages/addNews";
+import EditNews from "./pages/editNews";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const render = (content) => {
@@ -43,6 +44,11 @@ router.on({
 
 	"admin/news/add": () => {
 		render(addNews.printf());
+	},
+
+	"/admin/news/:id/edit": (value) => {
+		var id = value.data.id;
+		render(EditNews.printf(id));
 	},
 });
 
