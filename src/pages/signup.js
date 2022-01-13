@@ -1,7 +1,13 @@
+import Banner from "../components/banner";
+import Footer from "../components/footer";
+import Header from "../components/header";
+
 const SignUp = {
 	print() {
 		return /*html*/ `
-            <div class="hidden sm:block" aria-hidden="true">
+    <header id="header">${Header.printf()}</header>
+			<div class="my-3" id="banner">${Banner.printf()}</div>
+      <main>   <div class="hidden sm:block" aria-hidden="true">
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
   </div>
@@ -77,6 +83,9 @@ const SignUp = {
     </div>
   </div>
 </div>
+</main>
+<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
+         
         `;
 	},
 };

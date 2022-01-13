@@ -5,7 +5,12 @@ import NewList from "../components/newList";
 
 const HomePage = {
 	print() {
-		return /*html*/ ` ${NewList.printf()} `;
+		return /*html*/ ` 
+			<header id="header">${Header.printf()}</header>
+			<div class="my-3" id="banner">${Banner.printf()}</div>
+			<main>${NewList.printf()}</main>
+			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
+		`;
 	},
 };
 
