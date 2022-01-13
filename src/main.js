@@ -8,6 +8,7 @@ import detailNewPage from "./pages/detailNewPage";
 import HomePage from "./pages/home";
 import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
+import addNews from "./pages/addNews";
 
 const router = new Navigo("/", { linksSelector: "a" });
 const render = (content) => {
@@ -38,6 +39,10 @@ router.on({
 
 	"/admin/dashboard": () => {
 		render(DashBoard.print());
+	},
+
+	"admin/news/add": () => {
+		render(addNews.printf());
 	},
 });
 
