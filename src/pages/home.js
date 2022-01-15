@@ -8,7 +8,7 @@ const HomePage = {
 		return /*html*/ ` 
 			<header id="header">${Header.printf()}</header>
 			<div class="my-3" id="banner">${Banner.printf()}</div>
-			<main>${NewList.printf()}</main>
+			<main class="py-2">${NewList.printf()}</main>
 			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
 		`;
 	},
