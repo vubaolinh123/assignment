@@ -10,9 +10,9 @@ const Header = {
 							Trang Chủ</a></li>
 					<li class="inline-block mx-3"><a href="/contact" class="block py-4"><i class="far fa-address-book"></i> Liên
 							Hệ</a></li>
-					<li class="inline-block mx-3"><a href="/signup" class="block py-4"><i class="far fa-user"></i>
+					<li class="inline-block mx-3"><a href="/signin" class="block py-4"><i class="far fa-user"></i>
 							Đăng Ký</a></li>
-					<li class="inline-block mx-3"><a href="/signin" class="block py-4"><i class="fas fa-user"></i> Đăng
+					<li class="inline-block mx-3"><a href="/signup" class="block py-4"><i class="fas fa-user"></i> Đăng
 							Nhập</a>
 					</li>
 					<li class="inline-block mx-3"><a href="/cart" class="block py-4">
