@@ -33,7 +33,7 @@ const detailProduct = {
 								class="gia-sale text-2xl text-red-500 font-bold"> ${numberFormat.format(result.price)}</span>
 						</div>
 						<div class="form-group">
-							<a href=""
+							<a href="/cart"
 								class="font-bold text-white inline-block bg-red-500 py-3 px-5 rounded text-2xl my-3">ĐẶT
 								HÀNG</a>
 						</div>
