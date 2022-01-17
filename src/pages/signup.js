@@ -11,7 +11,8 @@ const SignUp = {
 					<div class="col-span-8 bg-grey-lighter min-h-screen flex flex-col bg-[#f3f7f9]">
             <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
-                    <h1 class="mb-8 text-3xl text-center">Đăng Nhập</h1>
+                    <form action="">
+							<h1 class="mb-8 text-3xl text-center">Đăng Nhập</h1>
                     <input 
                         type="text"
                         class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -27,6 +28,7 @@ const SignUp = {
                         type="submit"
                         class="w-full text-center py-3 rounded bg-green-500 text-white  my-1"
                     >Đăng Nhập</button>
+					</form>
                     <div class="text-center text-sm text-grey-dark mt-4">
                         By signing up, you agree to the 
                         <a class="no-underline border-b border-grey-dark text-grey-dark" href="#">
