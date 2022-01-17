@@ -20,6 +20,8 @@ const Header = {
 							<span class="bg-red-500 text-white rounded-2xl  inline-block px-2">2</span>
 						</a>
 					</li>
+					<li class="inline-block mx-3"><a href="/admin/dashboard" class="block py-4"><i class="fas fa-user"></i> Admin</a>
+					</li>
 				</ul>
 			</div>
 			<div class="col-span-2 py-3">
