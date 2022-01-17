@@ -1,7 +1,7 @@
 const Banner = {
 	printf() {
 		return /*html*/ `
-            <img src="https://i.imgur.com/FSz2VuZ.jpg" alt="">
+            <img src="https://i.imgur.com/SjIvGQH.jpg" alt="">
         `;
 	},
 };
