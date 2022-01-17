@@ -14,9 +14,9 @@ const HomeRight = {
 				<div class="py-3 grid grid-cols-3 gap-3">
 						${data.map((product)=>{
 							if(product.status == 1){
-								product.status = "Còn Hàng"
+								var status = "Còn Hàng"
 							}else{
-								product.status = "Hết Hàng"
+								status = "Hết Hàng"
 							}
 							return  /*html*/`
 								<div class="sanpham border border-gray-400 text-center">
@@ -27,7 +27,7 @@ const HomeRight = {
 											<span class="bg-red-500 text-white rounded-2xl  inline-block px-2 mx-2">${product.discount}%</span>
 										</span>
 										<span class="gia block text-[#ed0000] text-xl font-semibold">Giảm Giá: ${numberFormat.format(product.price)}</span>
-										<span class="gia block text-gray-600 text-xl font-semibold">Tình Trạng: ${product.status}</span>
+										<span class="gia block text-gray-600 text-xl font-semibold">Tình Trạng: ${status}</span>
 									</div>
 									<a href="/news/${product.id}" class="inline-block my-5 text-white bg-red-500 py-2 px-4 text-xl">Chi tiết <i
 											class="fas fa-chevron-circle-right "></i></a>

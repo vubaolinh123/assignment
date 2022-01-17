@@ -51,9 +51,11 @@ const ListNewsAdmin = {
           ${data
 				.map((post, index) => {
           if(post.status == 1){
-								post.status = "Còn Hàng"
+								var status = "Còn Hàng"
+                console.log("CÒN HÀNG");
 							}else{
-								post.status = "Hết Hàng"
+								status = "Hết Hàng"
+                console.log("HẾT HÀNG");
 							}
 					return /*html*/ `
               <tr>
@@ -64,7 +66,7 @@ const ListNewsAdmin = {
                   <td class="px-6 py-4 whitespace-nowrap">${numberFormat.format(post.fakePrice)}</td>
                   <td class="px-6 py-4 whitespace-nowrap">${post.discount}%</td>
                   <td class="px-6 py-4 whitespace-nowrap">${numberFormat.format(post.price)}</td>
-                  <td class="px-6 py-4 whitespace-nowrap">${post.status}</td>
+                  <td class="px-6 py-4 whitespace-nowrap">${status}</td>
 						      <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
 							        <a href="/admin/news/${post.id}/edit"class="text-indigo-600 hover:text-indigo-900">Edit</a>
                       <a href="/admin/news/${post.id}/delete"class="text-red-600 hover:text-red-900">Delete</a>
