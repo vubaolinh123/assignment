@@ -57,7 +57,7 @@ const CheckOut = {
 					</form>
 				</div>
 				<div id="checkout-right" class="col-span-4 bg-[#fafafa] border border-gray-300 border-y-0 p-7">
-					<div class="h-[200px] overflow-auto">
+					<div class="h-[300px] overflow-auto">
 						<div class=" grid grid-cols-5 border border-b-2 border-x-0 border-t-0 py-4">
 							<div class="col-span-2"><img src="https://i.imgur.com/5vbUxov.jpg" alt="" width="150"></div>
 							<div class="col-span-2 font-bold text-sm py-[50px]"><span class="">VENTUS M</span></div>
