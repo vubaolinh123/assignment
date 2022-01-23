@@ -1,4 +1,4 @@
-import data from "../data";
+import { get, getAll } from "../api/products";
 import Banner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -11,8 +11,10 @@ const numberFormat = new Intl.NumberFormat('vi-VN', {
 
 
 const detailProduct = {
-	print(id) {
-		const result = data.find((product) => product.id === id);
+	async print(id) {
+		const  { data } = await get(id);
+		const data2 = await getAll();
+		const dataProducts = data2.data;
 		return /*html*/ `
             <header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.printf()}</header>
 			<div class="" id="banner">${Banner.printf()}</div>
@@ -21,16 +23,16 @@ const detailProduct = {
 				<div class="main-right col-span-6">
                     <div class="tittle-sp bg-red-500 text-white text-xl py-3 px-5 text-center"><span class="">CHI TIẾT SẢN PHẨM</span> </div>
 				    <div class="chitietsp grid grid-cols-5 gap-4 bg-gray-100">
-					<div class="anh-chitiet  col-span-3"><img src="${result.img}" alt=""></div>
+					<div class="anh-chitiet  col-span-3"><img src="${data.img}" alt=""></div>
 					<div class="content-sp col-span-2 p-2">
-						<h1 class="ten-sanpham font-bold text-xl pb-2">Tên Sản Phẩm: ${result.title}</h1>
-						<p class="chitiet-sanpham"><span class="font-bold">Giới thiệu:</span> <span class="text-sm">${result.desc}</span></p>
+						<h1 class="ten-sanpham font-bold text-xl pb-2">Tên Sản Phẩm: ${data.title}</h1>
+						<p class="chitiet-sanpham"><span class="font-bold">Giới thiệu:</span> <span class="text-sm">${data.desc}</span></p>
 						<div class="nav-price py-3">
 							<span class="price-text font-bold text-lg inline-block w-[75px]">Giá Cũ: </span>
-							<span class="gia-sanpham text-2xl text-[#888] font-bold"><del> ${numberFormat.format(result.fakePrice)}</del></span>
+							<span class="gia-sanpham text-2xl text-[#888] font-bold"><del> ${numberFormat.format(data.fakePrice)}</del></span>
 							<br>
 							<span class="price-text  font-bold text-lg inline-block w-[75px]">Giá KM:</span><span
-								class="gia-sale text-2xl text-red-500 font-bold"> ${numberFormat.format(result.price)}</span>
+								class="gia-sale text-2xl text-red-500 font-bold"> ${numberFormat.format(data.price)}</span>
 						</div>
 						<div class="form-group">
 							<a href="/cart"
@@ -43,7 +45,7 @@ const detailProduct = {
             <div class="spcl col-span-8">
                 <div class="bg-red-500 text-white text-xl py-3 px-5 text-center "><span class="">Sản Phẩm Cùng Loại</span> </div>
                 <div class="grid grid-cols-5 gap-4">
-                ${data.map((product)=>{
+                ${dataProducts.map((product)=>{
                     return /*html*/`
                         <div class="border border-black p-2 my-2">
 					        <a href="/news/${product.id}"><img src="${product.img}" alt=""></a>

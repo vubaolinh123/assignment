@@ -11,50 +11,52 @@ import CartPage from "./pages/CartPage";
 import CheckOut from "./pages/CheckOut";
 
 const router = new Navigo("/", { linksSelector: "a" });
-const render = (content) => {
-	document.querySelector("#app").innerHTML = content;
+
+const render = async (content, id) => {
+	document.querySelector("#app").innerHTML = await content.print(id);
+	if(content.afterRender()) content.afterRender(id);
 };
 
 router.on({
 	"/": () => {
-		render(HomePage.print());
+		render(HomePage);
 	},
 
 	"/contact": () => {
-		render(contactPage.print());
+		render(contactPage);
 	},
 
 	"/signup": () => {
-		render(SignUp.print());
+		render(SignUp);
 	},
 
 	"/signin": () => {
-		render(SignIn.print());
+		render(SignIn);
 	},
 
-	"/news/:id": (value) => {
+	"/products/:id": (value) => {
 		console.log(value.data.id);
-		render(detailProduct.print(value.data.id));
+		render(detailProduct, value.data.id);
 	},
 
 	"/admin/dashboard": () => {
-		render(DashBoard.print());
+		render(DashBoard);
 	},
 
 	"/admin/news/add": () => {
-		render(addNews.printf());
+		render(addNews);
 	},
 
 	"/admin/news/:id/edit": (value) => {
 		var id = value.data.id;
-		render(EditNews.printf(id));
+		render(EditNews, id);
 	},
 
 	"/cart": () => {
-		render(CartPage.printf());
+		render(CartPage);
 	},
 	"/checkout": () => {
-		render(CheckOut.printf());
+		render(CheckOut);
 	},
 });
 

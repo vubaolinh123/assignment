@@ -4,7 +4,7 @@ import ListNewsAdmin from "../../../components/ListNewsAdmin";
 import NavAdmin from "../../../components/navAdmin";
 
 const EditNews = {
-	printf(id) {
+	print(id) {
 		return /*html*/ `
         <div class="min-h-full">
 				${NavAdmin.printf()}

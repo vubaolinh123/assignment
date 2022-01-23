@@ -3,7 +3,7 @@ import ListNewsAdmin from "../../../components/ListNewsAdmin";
 import NavAdmin from "../../../components/navAdmin";
 
 const AddNews = {
-	printf() {
+	print() {
 		return /*html*/ `
         <div class="min-h-full">
 				${NavAdmin.printf()}

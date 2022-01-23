@@ -5,7 +5,7 @@ import Header from "../components/header";
 
 
 const CartPage = {
-	printf() {
+	print() {
 		return /*html*/ ` 
 			<header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.printf()}</header>
 			<div class="" id="banner">${Banner.printf()}</div>
