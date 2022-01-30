@@ -1,8 +1,7 @@
-import ListNewsAdmin from "../../components/ListNewsAdmin";
 import NavAdmin from "../../components/navAdmin";
 
 const DashBoard = {
-	print() {
+	async print() {
 		return /*html*/ `
         <div class="min-h-full">
 				${NavAdmin.printf()}
@@ -11,11 +10,9 @@ const DashBoard = {
       			<h1 class="text-3xl font-bold text-gray-900">Trang Chủ Admin</h1>
     	</div>
   	</header>
-  <main>
+  	<main>
 		<div class="max-w-7xl mx-auto py-6 ">
-      <!-- Replace with your content -->
-		${ListNewsAdmin.printf()}
-      <!-- /End replace -->
+			MAIN DashBoard
     </div>
   </main>
 </div>

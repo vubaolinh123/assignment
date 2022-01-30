@@ -5,16 +5,20 @@ import detailProduct from "./pages/detailProduct";
 import HomePage from "./pages/home";
 import SignIn from "./pages/signin";
 import SignUp from "./pages/signup";
-import addNews from "./pages/admin/news/addNews";
-import EditNews from "./pages/admin/news/editNews";
 import CartPage from "./pages/CartPage";
 import CheckOut from "./pages/CheckOut";
+import indexNews from "./pages/admin/product/indexNews";
+import EditProducts from "./pages/admin/product/editNews";
+import AddProduct from "./pages/admin/product/addNews";
+import indexCategory from "./pages/admin/category/indexCategory";
+import AddCategory from "./pages/admin/category/addCategory";
+import EditCategory from "./pages/admin/category/editCategory";
 
 const router = new Navigo("/", { linksSelector: "a" });
 
 const render = async (content, id) => {
 	document.querySelector("#app").innerHTML = await content.print(id);
-	if(content.afterRender()) content.afterRender(id);
+	if (content.afterRender) content.afterRender(id);
 };
 
 router.on({
@@ -43,21 +47,43 @@ router.on({
 		render(DashBoard);
 	},
 
-	"/admin/news/add": () => {
-		render(addNews);
-	},
-
-	"/admin/news/:id/edit": (value) => {
-		var id = value.data.id;
-		render(EditNews, id);
-	},
-
 	"/cart": () => {
 		render(CartPage);
 	},
 	"/checkout": () => {
 		render(CheckOut);
 	},
+
+	// SẢN PHẨM
+
+	"/admin/product": () => {
+		render(indexNews);
+	},
+
+	"/admin/product/add": () => {
+		render(AddProduct);
+	},
+
+	"/admin/product/:id/edit": (value) => {
+		var id = value.data.id;
+		render(EditProducts, id);
+	},
+
+	// DANH MỤC 
+
+	"/admin/category": () => {
+		render(indexCategory);
+	},
+
+	"/admin/category/add": () => {
+		render(AddCategory);
+	},
+
+	"/admin/category/:id/edit": (value) => {
+		var id = value.data.id;
+		render(EditCategory, id);
+	},
+
 });
 
 router.notFound(() => {
