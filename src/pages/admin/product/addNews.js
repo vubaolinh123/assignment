@@ -1,6 +1,7 @@
 import NavAdmin from "../../../components/navAdmin";
 import { add } from "../../../api/products";
 import { getAll } from "../../../api/category";
+import axios from "axios";
 
 const AddProduct = {
 	async print() {
@@ -33,7 +34,7 @@ const AddProduct = {
 									<div class="col-span-6 sm:col-span-3">
 										<label for="image-product"
 											class="block text-sm font-medium text-gray-700">Ảnh</label>
-										<input type="text" name="image-product" id="image-product" placeholder="Vui lòng nhập Url ảnh"
+										<input type="file" name="image-product" id="image-product"
 											class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 									</div>
 
@@ -92,19 +93,38 @@ const AddProduct = {
 	},
 	afterRender() {
 		const formAdd = document.querySelector('#form-add-post');
+		var nameProduct = document.querySelector('#product-name')
+		var imageProduct = document.querySelector('#image-product')
+		var descProduct = document.querySelector('#desc-product')
+		var priceProduct = document.querySelector('#price-product')
+		var discoutProduct = document.querySelector('#discout-product')
+		var selectCategory = document.querySelector('#select-category');
+		var dataImg = ""
+
+		imageProduct.addEventListener('change', async (e) => {
+			const file = e.target.files[0];
+			const formData = new FormData();
+			const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/hinalink/image/upload"
+			formData.append('file', file);
+			formData.append('upload_preset', "rgjdfr7q")
+
+			const response = await axios.post(CLOUDINARY_API, formData, {
+				headers: {
+					"Content-Type": "application/form-data"
+				}
+			})
+
+			dataImg = response.data.url
+		})
+
+
 		formAdd.addEventListener('submit', (e) => {
 			e.preventDefault();
-			var nameProduct = document.querySelector('#product-name')
-			var imageProduct = document.querySelector('#image-product')
-			var descProduct = document.querySelector('#desc-product')
-			var priceProduct = document.querySelector('#price-product')
-			var discoutProduct = document.querySelector('#discout-product')
-			var selectCategory = document.querySelector('#select-category');
 
 			var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
 			add({
 				title: nameProduct.value,
-				img: imageProduct.value,
+				img: dataImg,
 				desc: descProduct.value,
 				price: priceProduct.value,
 				fakePrice: price,

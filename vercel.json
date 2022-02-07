@@ -1,0 +1,60 @@
+{
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/"
+        },
+        {
+            "src": "/contact",
+            "dest": "/"
+        },
+        {
+            "src": "/signup",
+            "dest": "/"
+        },
+        {
+            "src": "/signin",
+            "dest": "/"
+        },
+        {
+            "src": "/products/:id",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/dashboard",
+            "dest": "/"
+        },
+        {
+            "src": "/cart",
+            "dest": "/"
+        },
+        {
+            "src": "/checkout",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/product",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/product/add",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/product/:id/edit",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/category",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/category/add",
+            "dest": "/"
+        },
+        {
+            "src": "/admin/category/:id/edit",
+            "dest": "/"
+        }
+    ]
+}

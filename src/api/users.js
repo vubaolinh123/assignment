@@ -1,11 +1,10 @@
-import instance from "./config"
-
-export const signin = (user) => {
-    const url = "/login";
-    return instance.post(url, user);
-}
+import instance from './config';
 
 export const signup = (user) => {
-    const url = `/signup`;
+    const url = "/signup";
+    return instance.post(url, user);
+}
+export const signin = (user) => {
+    const url = "/signin";
     return instance.post(url, user);
 }

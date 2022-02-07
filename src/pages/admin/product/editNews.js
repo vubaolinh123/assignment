@@ -59,7 +59,7 @@ const EditProducts = {
 															class="block text-sm font-medium text-gray-700">Giá</label>
 														<input type="number" min="0" name="price-product"
 															id="price-product" placeholder="Nhập giá sản phẩm"
-															value="${data.fakePrice}"
+															value="${data.price}"
 															class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 													</div>
 													<div class="col-span-6 sm:col-span-3">
@@ -88,8 +88,8 @@ const EditProducts = {
 														<select name="select-category" id="select-category" class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 																${dataC.map((category, index) => {
 			return `
-				<option value="${category.id}" class="options-category">${category.name}</option>
-				`
+																					<option value="${category.id}" class="options-category">${category.name}</option>
+																				`
 		}).join("")}
 														</select>
 													</div>
@@ -114,10 +114,10 @@ const EditProducts = {
 		</div>
         `;
 	},
-	async afterRender(id) {
+	afterRender(id) {
 		// const { data } = await get(id);
 		// const idCategorySelected = data.id_category;
-		var selectCategory = document.querySelector('#select-category');
+		// var selectCategory = document.querySelector('#select-category');
 
 		// Selected vào category sản phẩm Edit 
 		// var option;

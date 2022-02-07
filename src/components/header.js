@@ -6,14 +6,14 @@ const Header = {
 			</div>
 			<div class="col-span-5 ">
 				<ul class="menu">
-					<li class="inline-block mx-3"><a href="" class="block py-4"><i class="fas fa-house-damage"></i>
+					<li class="inline-block mx-3"><a href="/" class="block py-4"><i class="fas fa-house-damage"></i>
 							Trang Chủ</a></li>
 					<li class="inline-block mx-3"><a href="/contact" class="block py-4"><i class="far fa-address-book"></i> Liên
 							Hệ</a></li>
 					<li class="inline-block mx-3"><a href="/signin" class="block py-4"><i class="far fa-user"></i>
-							Đăng Ký</a></li>
+							Đăng Nhập</a></li>
 					<li class="inline-block mx-3"><a href="/signup" class="block py-4"><i class="fas fa-user"></i> Đăng
-							Nhập</a>
+							Ký</a>
 					</li>
 					<li class="inline-block mx-3"><a href="/cart" class="block py-4">
 							<i class="fas fa-shopping-cart"></i> Giỏ Hàng 

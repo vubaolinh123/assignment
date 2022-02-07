@@ -69,15 +69,26 @@
       "id": 7
     },
     {
+      "id": 8,
       "title": "TEST03",
       "img": "https://i.imgur.com/5vbUxov.jpg",
       "desc": "TESSS NỘI DUNG ABCCCCCC",
       "price": "100000000",
-      "fakePrice": 95000000,
-      "discount": "5",
+      "fakePrice": 80000000,
+      "discount": "20",
+      "status": "0",
+      "id_category": "2"
+    },
+    {
+      "title": "TEST03",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1644227644/zgslkiti5srvt6bvi2xg.png",
+      "desc": "daxx",
+      "price": "1000000",
+      "fakePrice": 800000,
+      "discount": "20",
       "status": 1,
-      "id_category": "4",
-      "id": 8
+      "id_category": "1",
+      "id": 9
     }
   ],
   "category": [
@@ -96,6 +107,14 @@
     {
       "name": "Category 04",
       "id": 4
+    }
+  ],
+  "users": [
+    {
+      "email": "duyphi456@gmail.com",
+      "password": "$2a$10$7hSF3cAn.KGr5AaUU9IpaudZAqFLsGpAwWVmEjuLHEyf26z.fHLSK",
+      "username": "Linh",
+      "id": 1
     }
   ]
 }
