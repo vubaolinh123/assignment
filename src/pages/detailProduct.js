@@ -1,9 +1,13 @@
 import { get, getAll } from "../api/products";
+import { addToCart } from "../utils/cart";
 import { Relationships } from "../api/category";
 import Banner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/header";
 import HomeLeft from "../components/HomeLeft";
+import { $ } from "../utils/selector";
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
 	style: 'currency',
@@ -33,15 +37,19 @@ const detailProduct = {
 						<p class="chitiet-sanpham"><span class="font-bold">Giới thiệu:</span> <span class="text-sm">${data.desc}</span></p>
 						<div class="nav-price py-3">
 							<span class="price-text font-bold text-lg inline-block w-[75px]">Giá Cũ: </span>
-							<span class="gia-sanpham text-2xl text-[#888] font-bold"><del> ${numberFormat.format(data.fakePrice)}</del></span>
+							<span class="gia-sanpham text-2xl text-[#888] font-bold"><del>  ${numberFormat.format(data.price)}</del></span>
 							<br>
 							<span class="price-text  font-bold text-lg inline-block w-[75px]">Giá KM:</span><span
-								class="gia-sale text-2xl text-red-500 font-bold"> ${numberFormat.format(data.price)}</span>
+								class="gia-sale text-2xl text-red-500 font-bold">${numberFormat.format(data.fakePrice)}</span>
 						</div>
 						<div class="form-group">
-							<a href="/cart"
-								class="font-bold text-white inline-block bg-red-500 py-3 px-5 rounded text-2xl my-3">ĐẶT
-								HÀNG</a>
+							<button
+								class="font-bold text-white inline-block bg-red-500 py-3 px-5 rounded text-2xl my-3" id="btnAddToCart">ĐẶT
+								HÀNG</button>
+								<div>
+									<label class="text-lg">Số lượng</label>
+									<input type="number" id="inputQty" class="border border-gray-400 py-1 px-2 w-[40px]" value="1" />
+								</div>
 						</div>
 					</div>
 				</div>
@@ -52,12 +60,12 @@ const detailProduct = {
                 ${dataSameProduct.map((product) => {
 			return /*html*/`
                         <div class="border border-black p-2 my-2">
-					        <a href="/news/${product.id}"><img src="${product.img}" alt=""></a>
+					        <a href="/products/${product.id}"><img src="${product.img}" alt=""></a>
 					        <span class="font-bold">${product.title}</span>
-					        <span class="block text-[#888]  text-base my-1"><del>${numberFormat.format(product.fakePrice)}</del> 
+					        <span class="block text-[#888]  text-base my-1"><del>${numberFormat.format(product.price)}</del> 
                                 <span class="bg-red-500 text-white rounded-2xl  inline-block px-2 mx-2 text-sm">${product.discount}%</span>
                             </span>
-					    <span class="text-red-500 font-bold block text-xl">${numberFormat.format(product.price)}</span>
+					    <span class="text-red-500 font-bold block text-xl">${numberFormat.format(product.fakePrice)}</span>
 				</div> 
                     `
 		}).join("")}
@@ -67,8 +75,17 @@ const detailProduct = {
 			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
           `;
 	},
-	afterRender() {
-		Header.afterRender();
+	afterRender(id) {
+		// Header.afterRender();
+		const btnAdd = document.querySelector("#btnAddToCart");
+		btnAdd.addEventListener('click', async function () {
+			const { data } = await get(id);
+			addToCart({ ...data, quantity: +$("#inputQty").value, total: +$("#inputQty").value * data.fakePrice }, () => {
+				toastr.success("Thêm thành công!");
+				document.location.href = "/cart";
+			})
+		})
+
 	}
 };
 
