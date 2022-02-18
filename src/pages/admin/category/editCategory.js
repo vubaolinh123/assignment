@@ -59,7 +59,9 @@ const EditCategory = {
 				id: id,
 				name: nameCategory.value,
 			})
-				.then((result) => console.log(result.data))
+				.then(() => {
+					document.location.href = "/admin/category";
+				})
 				.catch((error) => console.log(error))
 
 			alert('Cập nhật sản phẩm thành công')

@@ -9,7 +9,7 @@
       "fakePrice": 19890000,
       "discount": "10",
       "status": "0",
-      "id_category": "2"
+      "categoryId": 3
     },
     {
       "createdAt": "2022-01-10T07:26:52.549Z",
@@ -20,7 +20,7 @@
       "fakePrice": 26999999,
       "discount": 40,
       "status": 1,
-      "id_category": "3",
+      "categoryId": 1,
       "id": 2
     },
     {
@@ -32,7 +32,7 @@
       "fakePrice": 24999999,
       "discount": 30,
       "status": 1,
-      "id_category": "2",
+      "categoryId": 4,
       "id": 3
     },
     {
@@ -43,7 +43,7 @@
       "price": "80000000",
       "fakePrice": 40000000,
       "discount": "50",
-      "id_category": "2",
+      "categoryId": 3,
       "status": "1"
     },
     {
@@ -55,7 +55,7 @@
       "fakePrice": 7117037.2,
       "discount": "30",
       "status": 1,
-      "id_category": "2"
+      "categoryId": 1
     },
     {
       "title": "TEST03",
@@ -65,7 +65,7 @@
       "fakePrice": 3260718121.7,
       "discount": "35",
       "status": 1,
-      "id_category": "2",
+      "categoryId": 2,
       "id": 7
     },
     {
@@ -77,7 +77,7 @@
       "fakePrice": 80000000,
       "discount": "20",
       "status": "0",
-      "id_category": "2"
+      "categoryId": 2
     },
     {
       "title": "TEST03",
@@ -87,26 +87,41 @@
       "fakePrice": 800000,
       "discount": "20",
       "status": 1,
-      "id_category": "1",
+      "categoryId": 2,
       "id": 9
+    },
+    {
+      "title": "TEST",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1644661773/po9ajiamkmhyss81cj90.jpg",
+      "desc": "123aaaa",
+      "price": "100000",
+      "fakePrice": 80000,
+      "discount": "20",
+      "status": 1,
+      "categoryId": 2,
+      "id": 10
     }
   ],
-  "category": [
+  "categorys": [
     {
       "id": 1,
-      "name": "Category 01"
+      "name": "Máy Tính"
     },
     {
       "id": 2,
-      "name": "Category 02"
+      "name": "Laptop"
     },
     {
       "id": 3,
-      "name": "Category 03"
+      "name": "PC"
     },
     {
-      "name": "Category 04",
-      "id": 4
+      "id": 4,
+      "name": "Laptop Gaming"
+    },
+    {
+      "name": "Danh Mục Test",
+      "id": 5
     }
   ],
   "users": [
@@ -114,7 +129,22 @@
       "email": "duyphi456@gmail.com",
       "password": "$2a$10$7hSF3cAn.KGr5AaUU9IpaudZAqFLsGpAwWVmEjuLHEyf26z.fHLSK",
       "username": "Linh",
+      "role": 1,
       "id": 1
+    },
+    {
+      "email": "vubaolinh111@gmail.com",
+      "password": "$2a$10$ape9OTt3AsoOwZwoACA4gO69vNwusbU8yjkvfSbsIFRHXAYDjT5AG",
+      "username": "Vũ Linh",
+      "role": 0,
+      "id": 2
+    },
+    {
+      "email": "linh@gmail.com",
+      "password": "$2a$10$m6ng4i6epYSxtlCDWZ3zue/9doAKoTqvbhMgIWeqX1/EIuRC8uuxy",
+      "username": "Bảo Linh",
+      "role": 0,
+      "id": 3
     }
   ]
 }

@@ -16,8 +16,8 @@ const indexCategory = {
             <div class="min-h-full">
 		${NavAdmin.printf()}
 		<header class="bg-white shadow">
-			<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-				<h1 class="text-3xl font-bold text-gray-900">Trang Chủ Admin</h1>
+			<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 grid grid-cols-2">
+				<h1 class="text-3xl font-bold text-gray-900">Quản Trị Danh Mục Sản Phẩm</h1>
 			</div>
 		</header>
 		<main>
@@ -74,7 +74,6 @@ const indexCategory = {
 	},
 	afterRender() {
 		const buttons = document.querySelectorAll('.btn');
-		console.log(buttons);
 		buttons.forEach(button => {
 			const id = button.dataset.id;
 			button.addEventListener("click", () => {

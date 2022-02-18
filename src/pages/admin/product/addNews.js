@@ -130,7 +130,7 @@ const AddProduct = {
 				fakePrice: price,
 				discount: discoutProduct.value,
 				status: 1,
-				id_category: selectCategory.value
+				categoryId: selectCategory.value
 			})
 				.then((result) => console.log(result.data))
 				.catch((error) => console.log(error))

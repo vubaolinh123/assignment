@@ -1,5 +1,6 @@
 import { update, get } from "../../../api/products"
 import { getAll as GetAllCategory } from "../../../api/category";
+import { reRender } from "../../../utils/reRedner"
 import NavAdmin from "../../../components/navAdmin";
 
 const EditProducts = {
@@ -156,9 +157,11 @@ const EditProducts = {
 				fakePrice: price,
 				discount: discoutProduct.value,
 				status: status,
-				id_category: selectCategory.value
+				categoryId: selectCategory.value
 			})
-				.then((result) => console.log(result.data))
+				.then(() => {
+					document.location.href = "/admin/category";
+				})
 				.catch((error) => console.log(error))
 
 			alert('Cập nhật sản phẩm thành công')

@@ -1,6 +1,9 @@
 import { getAll, remove } from "../../../api/products"
 import { getAll as GetAllCategory } from "../../../api/category";
+import { reRender } from "../../../utils/reRedner"
+import { Relationships } from "../../../api/category"
 import NavAdmin from "../../../components/navAdmin";
+
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
 	style: 'currency',
@@ -18,8 +21,16 @@ const indexNews = {
             <div class="min-h-full">
 		${NavAdmin.printf()}
 		<header class="bg-white shadow">
-			<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-				<h1 class="text-3xl font-bold text-gray-900">Trang Chủ Admin</h1>
+			<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 grid grid-cols-2">
+				<h1 class="text-3xl font-bold text-gray-900">Quản Trị Sản Phẩm</h1>
+				<select name="select-category" id="select-category" class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border border-black rounded-md">
+						<option value="0" selected>Tất Cả Sản Phẩm</option>
+						${dataC.map((catePro) => {
+			return /*html*/`
+								<option value="${catePro.id}" >${catePro.name}</option>
+							`
+		}).join("")}
+				</select>
 			</div>
 		</header>
 		<main>
@@ -84,7 +95,7 @@ const indexNews = {
 						status = "Hết"
 					}
 
-					const result = dataC.filter(category => category.id == product.id_category)
+					const result = dataC.filter(category => category.id == product.categoryId)
 
 					return /*html*/ `
 										<tr>
@@ -125,9 +136,11 @@ const indexNews = {
             
         `;
 	},
-	afterRender() {
+	async afterRender() {
 		const buttons = document.querySelectorAll('.btn');
-		console.log(buttons);
+		const selectCatePro = document.querySelector("#select-category")
+		console.log(selectCatePro);
+
 		buttons.forEach(button => {
 			const id = button.dataset.id;
 			button.addEventListener("click", () => {
@@ -136,6 +149,17 @@ const indexNews = {
 					remove(id).then(() => alert("Bạn đã xóa thành công"))
 				}
 			})
+		});
+		// abc
+		selectCatePro.addEventListener("change", (item) => {
+			if (selectCatePro.value != 0) {
+				// const ProInCate = await Relationships((selectCatePro.value));
+				// const dataProInCate = ProInCate.data.products;
+				// console.log(dataProInCate);
+
+			} else {
+				reRender(indexNews, '#app')
+			}
 		})
 	}
 };

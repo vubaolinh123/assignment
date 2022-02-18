@@ -58,7 +58,7 @@ const AddCategory = {
 			add({
 				name: nameCategory.value,
 			})
-				.then((result) => console.log(result.data))
+				.then(() => document.location.href = "/admin/category")
 				.catch((error) => console.log(error))
 
 			alert('Thêm danh mục mới thành công')

@@ -1,4 +1,5 @@
 import { signin } from "../api/users";
+import { reRender } from '../utils/reRedner'
 import Banner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -6,7 +7,7 @@ import Header from "../components/header";
 const SignUp = {
     print() {
         return /*html*/ `
-         <header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.printf()}</header>
+         <header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.print()}</header>
 			<div class="" id="banner">${Banner.printf()}</div>
 			<main class="grid grid-cols-8 gap-3 my-2 relative">
 					<div class="col-span-8 bg-grey-lighter min-h-screen flex flex-col bg-[#f3f7f9]">
@@ -54,6 +55,7 @@ const SignUp = {
         `;
     },
     afterRender() {
+        // Header.afterRender();
         const Form = document.querySelector(".form");
         const email = document.querySelector(".email");
         const password = document.querySelector(".password");
@@ -65,9 +67,13 @@ const SignUp = {
                     email: email.value,
                     password: password.value,
                 });
-
-                console.log(response);
-
+                // console.log(response.data.user);
+                localStorage.setItem('user', JSON.stringify(response.data.user));
+                if (response.data.user.role == 1) {
+                    document.location.href = "/admin/dashboard";
+                } else {
+                    document.location.href = "/";
+                }
             } catch (error) {
                 console.log(error.response.data);
             }

@@ -13,13 +13,31 @@ import AddProduct from "./pages/admin/product/addNews";
 import indexCategory from "./pages/admin/category/indexCategory";
 import AddCategory from "./pages/admin/category/addCategory";
 import EditCategory from "./pages/admin/category/editCategory";
+import ProInTheCate from "./pages/ProInTheCate";
 
-const router = new Navigo("/", { linksSelector: "a" });
+const router = new Navigo("/", { linksSelector: "a", hash: true });
 
 const render = async (content, id) => {
 	document.querySelector("#app").innerHTML = await content.print(id);
 	if (content.afterRender) content.afterRender(id);
 };
+
+
+router.on("/admin/*", () => { }, {
+	before(done, match) {
+		if (localStorage.getItem('user')) {
+			const userRole = JSON.parse(localStorage.getItem('user')).role;
+			if (userRole === 1) {
+				done();
+			} else {
+				document.location.href = "/";
+			}
+		} else {
+			document.location.href = "/";
+		}
+
+	}
+})
 
 router.on({
 	"/": () => {
@@ -52,6 +70,11 @@ router.on({
 	},
 	"/checkout": () => {
 		render(CheckOut);
+	},
+
+	"/productCate/:id": (value) => {
+		var id = value.data.id;
+		render(ProInTheCate, id);
 	},
 
 	// SẢN PHẨM
