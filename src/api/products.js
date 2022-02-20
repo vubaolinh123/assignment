@@ -5,6 +5,11 @@ export const getAll = (param) => {
     return instance.get(url)
 }
 
+export const Search = (keyword) => {
+    const url = `/products?title_like=${keyword}`;
+    return instance.get(url)
+}
+
 export const get = (id) => {
     const url = `/products/${id}`;
     return instance.get(url)
@@ -25,7 +30,7 @@ export const update = (product) => {
 }
 
 export const getPage = (page) => {
-    const url = `/products?_page=${page}&_limit=6`;
+    const url = `/products?_page=${page}&_limit=6&_sort=id&_order=desc`;
     return instance.get(url);
 }
 

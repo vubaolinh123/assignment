@@ -16,6 +16,7 @@ import AddCategory from "./pages/admin/category/addCategory";
 import EditCategory from "./pages/admin/category/editCategory";
 import ProInTheCate from "./pages/ProInTheCate";
 import OrderSuccess from "./pages/OrderSuccess";
+import PageSearch from "./pages/PageSearch";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -89,6 +90,9 @@ router.on({
 		render(ProInTheCate, id);
 	},
 
+	"/search": () => {
+		render(PageSearch);
+	},
 	// SẢN PHẨM
 
 	"/admin/product": () => {

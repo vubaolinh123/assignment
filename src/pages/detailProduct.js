@@ -8,6 +8,8 @@ import HomeLeft from "../components/HomeLeft";
 import { $ } from "../utils/selector";
 import toastr from 'toastr';
 import "toastr/build/toastr.min.css";
+import PageSearch from "./PageSearch";
+import { reRender } from "../utils/reRedner"
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
 	style: 'currency',
@@ -85,6 +87,26 @@ const detailProduct = {
 				document.location.href = "/cart";
 			})
 		})
+
+		// let dataKeywords = []
+		// if (localStorage.getItem('keyword')) {
+		// 	dataKeywords = JSON.parse(localStorage.getItem('keyword'))
+		// }
+
+		// const keyword = document.querySelector("#search");
+		// const btnSearch = document.querySelector("#btnSearch");
+		// var dataKeyword = ""
+		// var keywordSto = []
+		// btnSearch.addEventListener("click", (e) => {
+		// 	dataKeyword = keyword.value;
+		// 	const keywordData = {
+		// 		keyword: dataKeyword,
+		// 	}
+		// 	keywordSto.push(keywordData)
+		// 	localStorage.setItem('keyword', JSON.stringify(keywordSto));
+		// 	reRender(PageSearch, "#app");
+		// });
+		// Header.afterRender();
 
 	}
 };

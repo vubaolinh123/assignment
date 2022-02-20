@@ -5,6 +5,7 @@ import HomeLeft from "../components/HomeLeft";
 import HomeRight from "../components/HomeRight";
 import { reRender } from "../utils/reRedner"
 import { getAll } from "../api/products"
+import PageSearch from "./PageSearch";
 
 let param = null;
 const HomePage = {
@@ -23,8 +24,7 @@ const HomePage = {
 			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
 		`;
 	},
-	async afterRender() {
-		// Header.afterRender();
+	async afterRender(key) {
 		const { data } = await getAll(param);
 		const RenderPage = document.querySelector(".renderPage")
 		let listPageSto = [];
@@ -52,15 +52,20 @@ const HomePage = {
 		})
 
 		const keyword = document.querySelector("#search");
-		const formSearch = document.querySelector("#formSearch");
-		formSearch.addEventListener("submit", (e) => {
-			e.preventDefault;
-			param = `title_like=${keyword.value}`;
-			console.log(param);
-			console.log(data);
-			// reRender(HomePage, "#app");
-			// keyword.value = keyword.value;
+		const btnSearch = document.querySelector("#btnSearch");
+		var dataKeyword = ""
+		var keywordSto = []
+		btnSearch.addEventListener("click", (e) => {
+			dataKeyword = keyword.value;
+			const keywordData = {
+				keyword: dataKeyword,
+			}
+			keywordSto.push(keywordData)
+			localStorage.setItem('keyword', JSON.stringify(keywordSto));
+			reRender(PageSearch, "#app");
 		});
+		Header.afterRender();
+
 	}
 };
 

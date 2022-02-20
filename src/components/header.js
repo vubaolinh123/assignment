@@ -1,3 +1,5 @@
+import HomePage from '../pages/home';
+import PageSearch from '../pages/PageSearch';
 import { reRender } from '../utils/reRedner'
 
 const Header = {
@@ -33,15 +35,15 @@ const Header = {
 				</ul >
 			</div >
 	<div class="col-span-2 py-3">
-		<form id="formSearch" action="">
+		<form id="formSearch">
 			<input id="search" type="text" class="border border-black">
-				<button id="btnSearch" type="submit" class="text-white bg-black px-1">Tìm kiếm</button>
+			<button  class="text-white bg-black px-1"><a  id="btnSearch">Tìm kiếm</a></button>
 		</form>
 	</div>
 `;
 	},
 
-	afterRender() {
+	async afterRender() {
 		const render = document.querySelector(".render-user")
 		const btnLogout = document.querySelector('#logout');
 		console.log(JSON.parse(localStorage.getItem('user')).email);
@@ -50,7 +52,21 @@ const Header = {
 			localStorage.removeItem('user');
 			alert('Bạn đã đăng xuất thành công');
 			reRender(Header, "#header");
-		})
+		});
+
+		// const keyword = document.querySelector("#search");
+		// const btnSearch = document.querySelector("#btnSearch");
+		// var dataKeyword = ""
+		// var keywordSto = []
+		// btnSearch.addEventListener("click", (e) => {
+		// 	dataKeyword = keyword.value;
+		// 	const keywordData = {
+		// 		keyword: dataKeyword,
+		// 	}
+		// 	keywordSto.push(keywordData)
+		// 	localStorage.setItem('keyword', JSON.stringify(keywordSto));
+		// });
+
 	}
 };
 

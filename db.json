@@ -142,6 +142,17 @@
       "status": 1,
       "categoryId": 2,
       "id": 14
+    },
+    {
+      "title": "Gaming",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645375683/ex7ff3x3gtfqt9dwig4h.jpg",
+      "desc": "hiiiii",
+      "price": "500000",
+      "fakePrice": 400000,
+      "discount": "20",
+      "status": 1,
+      "categoryId": 7,
+      "id": 15
     }
   ],
   "categorys": [
