@@ -145,7 +145,7 @@ const indexNews = {
 			button.addEventListener("click", () => {
 				const confirm = window.confirm("Bạn có chắc muốn xóa không ?")
 				if (confirm) {
-					remove(id).then(() => alert("Bạn đã xóa thành công"))
+					remove(id).then(() => reRender(indexNews, '#app'))
 				}
 			})
 		});

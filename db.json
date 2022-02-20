@@ -142,28 +142,6 @@
       "status": 1,
       "categoryId": 2,
       "id": 14
-    },
-    {
-      "title": "Link",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645341566/jvcnbesigxwzimgmezgn.png",
-      "desc": "dsgasgdsagsadfgsa",
-      "price": "4",
-      "fakePrice": 3.96,
-      "discount": "1",
-      "status": 1,
-      "categoryId": 7,
-      "id": 15
-    },
-    {
-      "title": "TEST03",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645343850/sq2bqtc2v2obmgvtqlfa.jpg",
-      "desc": "123465s6sa46das",
-      "price": "55555555",
-      "fakePrice": 44444444,
-      "discount": "20",
-      "status": 1,
-      "categoryId": 6,
-      "id": 16
     }
   ],
   "categorys": [
