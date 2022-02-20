@@ -192,6 +192,8 @@ const EditProducts = {
 					} else {
 						status = statusProduct[1].value
 					}
+
+					var selectedID = selectCategory.value;
 					update({
 						id: id,
 						title: nameProduct.value,
@@ -201,7 +203,7 @@ const EditProducts = {
 						fakePrice: price,
 						discount: discoutProduct.value,
 						status: status,
-						categoryId: selectCategory.value
+						categoryId: +selectedID
 					})
 						.then(() => {
 							document.location.href = "/admin/product";

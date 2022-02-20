@@ -38,7 +38,7 @@ const AddProduct = {
 									<div class="col-span-6 sm:col-span-3">
 										<label for="image-product"
 											class="block text-sm font-medium text-gray-700">Ảnh</label>
-										<input type="file" name="image-product" id="image-product"
+										<input type="file" multiple name="image-product" id="image-product"
 											class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 											<img src="http://2.bp.blogspot.com/-MowVHfLkoZU/VhgIRyPbIoI/AAAAAAAATtI/fHk-j_MYUBs/s640/placeholder-image.jpg" id="img-preview" width="200"/>
 									</div>
@@ -167,8 +167,10 @@ const AddProduct = {
 							}
 						});
 						dataImg = data.url;
+						console.log(dataImg);
 					}
 					var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
+					var selectedID = selectCategory.value;
 					add({
 						title: nameProduct.value,
 						img: dataImg ? dataImg : "",
@@ -177,7 +179,7 @@ const AddProduct = {
 						fakePrice: price,
 						discount: discoutProduct.value,
 						status: 1,
-						categoryId: selectCategory.value
+						categoryId: +selectedID
 					})
 						.then((result) => {
 							document.location.href = "/admin/product";

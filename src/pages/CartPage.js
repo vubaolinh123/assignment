@@ -95,7 +95,7 @@ const CartPage = {
 		cart.forEach(carts => {
 			tongTien = tongTien + (carts.fakePrice * carts.quantity)
 		})
-		renderTongTien.innerHTML = `${numberFormat.format(tongTien)}`;
+		renderTongTien.innerHTML = numberFormat.format(tongTien);
 
 		if ($(".btn")) {
 			console.log($(".btn"));
