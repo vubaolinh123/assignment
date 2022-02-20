@@ -6,9 +6,10 @@ import HomeRight from "../components/HomeRight";
 import { reRender } from "../utils/reRedner"
 import { getAll } from "../api/products"
 
-
+let param = null;
 const HomePage = {
 	async print() {
+		const { data } = await getAll(param);
 		return /*html*/ ` 
 			<header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.print()}</header>
 			<div class="" id="banner">${Banner.printf()}</div>
@@ -24,7 +25,7 @@ const HomePage = {
 	},
 	async afterRender() {
 		// Header.afterRender();
-		const { data } = await getAll();
+		const { data } = await getAll(param);
 		const RenderPage = document.querySelector(".renderPage")
 		let listPageSto = [];
 		var ListPage = "";
@@ -50,6 +51,16 @@ const HomePage = {
 			})
 		})
 
+		const keyword = document.querySelector("#search");
+		const formSearch = document.querySelector("#formSearch");
+		formSearch.addEventListener("submit", (e) => {
+			e.preventDefault;
+			param = `title_like=${keyword.value}`;
+			console.log(param);
+			console.log(data);
+			// reRender(HomePage, "#app");
+			// keyword.value = keyword.value;
+		});
 	}
 };
 

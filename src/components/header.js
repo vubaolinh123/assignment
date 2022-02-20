@@ -33,9 +33,9 @@ const Header = {
 				</ul >
 			</div >
 	<div class="col-span-2 py-3">
-		<form action="">
-			<input type="text" class="border border-black">
-				<button type="submit" class="text-white bg-black px-1">Tìm kiếm</button>
+		<form id="formSearch" action="">
+			<input id="search" type="text" class="border border-black">
+				<button id="btnSearch" type="submit" class="text-white bg-black px-1">Tìm kiếm</button>
 		</form>
 	</div>
 `;
