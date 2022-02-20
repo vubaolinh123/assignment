@@ -2,6 +2,11 @@ import { update, get } from "../../../api/products"
 import { getAll as GetAllCategory } from "../../../api/category";
 import { reRender } from "../../../utils/reRedner"
 import NavAdmin from "../../../components/navAdmin";
+import axios from "axios";
+import $ from 'jquery';
+import validate from 'jquery-validation';
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 
 const EditProducts = {
 	async print(id) {
@@ -40,11 +45,9 @@ const EditProducts = {
 													<div class="col-span-6 sm:col-span-3">
 														<label for="image-product"
 															class="block text-sm font-medium text-gray-700">Ảnh</label>
-														<img src="${data.img}" alt="" width="200" height="100" />
-														<input type="text" name="image-product" id="image-product"
-															placeholder="Vui lòng nhập Url ảnh"
-															class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-															value="${data.img}">
+														<img src="${data.img}" alt="" width="200" height="100" id="imagePreview"/>
+														<input type="file" name="image-product" id="image-product"
+														class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
 													</div>
 
 													<div class="col-span-6 sm:col-span-4">
@@ -98,7 +101,7 @@ const EditProducts = {
 												</div>
 											</div>
 											<div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-												<button type="submit"
+												<button
 													class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 													Cập Nhật
 												</button>
@@ -116,56 +119,98 @@ const EditProducts = {
         `;
 	},
 	afterRender(id) {
-		// const { data } = await get(id);
-		// const idCategorySelected = data.id_category;
-		// var selectCategory = document.querySelector('#select-category');
 
-		// Selected vào category sản phẩm Edit 
-		// var option;
-		// for (var i = 0; i < selectCategory.options.length; i++) {
-		// 	option = selectCategory.options[i];
-		// 	if (option.value == idCategorySelected) {
-		// 		option.setAttribute('selected', true);
-		// 		return;
-		// 	}
-		// }
-		// END SELECTED
+		const formAddProduct = $("#form-add-post")
+		var nameProduct = document.querySelector('#product-name')
+		var imageProduct = document.querySelector('#image-product')
+		var descProduct = document.querySelector('#desc-product')
+		var priceProduct = document.querySelector('#price-product')
+		var discoutProduct = document.querySelector('#discout-product')
+		var statusProduct = document.querySelectorAll('.status-product')
+		var selectCategory = document.querySelector("#select-category")
+		const ImagePreview = document.querySelector("#imagePreview")
+		let dataImg = ""
+		const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/hinalink/image/upload"
+		const CLOUDINARY_PRESET = "rgjdfr7q";
 
-		const formAdd = document.querySelector('#form-add-post');
-		formAdd.addEventListener('submit', (e) => {
-			e.preventDefault();
-			var nameProduct = document.querySelector('#product-name')
-			var imageProduct = document.querySelector('#image-product')
-			var descProduct = document.querySelector('#desc-product')
-			var priceProduct = document.querySelector('#price-product')
-			var discoutProduct = document.querySelector('#discout-product')
-			var statusProduct = document.querySelectorAll('.status-product')
-
-			var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
-			var status = 1;
-			if (statusProduct[0].checked) {
-				status = statusProduct[0].value
-			} else {
-				status = statusProduct[1].value
-			}
-			update({
-				id: id,
-				title: nameProduct.value,
-				img: imageProduct.value,
-				desc: descProduct.value,
-				price: priceProduct.value,
-				fakePrice: price,
-				discount: discoutProduct.value,
-				status: status,
-				categoryId: selectCategory.value
-			})
-				.then(() => {
-					document.location.href = "/admin/category";
-				})
-				.catch((error) => console.log(error))
-
-			alert('Cập nhật sản phẩm thành công')
+		imageProduct.addEventListener('change', async (e) => {
+			ImagePreview.src = URL.createObjectURL(e.target.files[0]);
 		})
+
+		formAddProduct.validate({
+			rules: {
+				"product-name": {
+					required: true,
+					minlength: 3
+				},
+				"desc-product": {
+					required: true,
+				},
+				"price-product": {
+					required: true,
+				},
+				"discout-product": {
+					required: true,
+				}
+			},
+			messages: {
+				"product-name": {
+					required: "Không được để trống tên sản phẩm !",
+					minlength: "Nhập ít nhất 3 ký tự"
+				},
+				"desc-product": {
+					required: "Không được để trống nội dung sản phẩm!",
+				},
+				"price-product": {
+					required: "Không được để trống giá sản phẩm!",
+				},
+				"discout-product": {
+					required: "Không được để trống giảm giá sản phẩm!",
+				}
+			},
+			submitHandler: function () {
+				async function eidtProduct() {
+					const file = imageProduct.files[0];
+					if (file) {
+						const formData = new FormData();
+						formData.append('file', file);
+						formData.append('upload_preset', CLOUDINARY_PRESET)
+
+						// call api cloudinary
+
+						const { data } = await axios.post(CLOUDINARY_API, formData, {
+							headers: {
+								"Content-Type": "application/form-data"
+							}
+						});
+						dataImg = data.url;
+					}
+					var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
+					var status = 1;
+					if (statusProduct[0].checked) {
+						status = statusProduct[0].value
+					} else {
+						status = statusProduct[1].value
+					}
+					update({
+						id: id,
+						title: nameProduct.value,
+						img: dataImg != "" ? dataImg : ImagePreview.src,
+						desc: descProduct.value,
+						price: priceProduct.value,
+						fakePrice: price,
+						discount: discoutProduct.value,
+						status: status,
+						categoryId: selectCategory.value
+					})
+						.then(() => {
+							document.location.href = "/admin/product";
+						})
+						.catch((error) => console.log(error))
+				}
+				eidtProduct();
+			}
+		});
 	}
 };
 

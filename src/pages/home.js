@@ -3,6 +3,8 @@ import Footer from "../components/footer";
 import Header from "../components/header";
 import HomeLeft from "../components/HomeLeft";
 import HomeRight from "../components/HomeRight";
+import { reRender } from "../utils/reRedner"
+import { getAll } from "../api/products"
 
 
 const HomePage = {
@@ -14,11 +16,40 @@ const HomePage = {
 					<div class="main-left col-span-2">${await HomeLeft.printf()}</div>
 					<div class="main-right col-span-6">${await HomeRight.printf()}</div>
 			</main>
+			<ul class="text-center my-2 renderPage">
+						
+			</ul>
 			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
 		`;
 	},
-	afterRender() {
-		Header.afterRender();
+	async afterRender() {
+		// Header.afterRender();
+		const { data } = await getAll();
+		const RenderPage = document.querySelector(".renderPage")
+		let listPageSto = [];
+		var ListPage = "";
+
+		const numberPage = Math.ceil(data.length / 6);
+		for (let index = 1; index <= numberPage; index++) {
+			ListPage += `<li class="inline-block"><button class="border border-black text-lg px-2 cursor-pointer hover:bg-black hover:text-white text-2xl listPage ml-2" value="${index}">${index}</button></li>`
+		}
+
+		RenderPage.innerHTML = ListPage;
+		const listPage = document.querySelectorAll(".listPage");
+
+
+
+		listPage.forEach(item => {
+			item.addEventListener("click", (e) => {
+				var pages = {
+					numberPage: item.value
+				}
+				listPageSto.push(pages)
+				localStorage.setItem('listPage', JSON.stringify(listPageSto));
+				reRender(HomePage, "#app", item.value);
+			})
+		})
+
 	}
 };
 

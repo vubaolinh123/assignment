@@ -96,7 +96,6 @@ const indexNews = {
 					}
 
 					const result = dataC.filter(category => category.id == product.categoryId)
-
 					return /*html*/ `
 										<tr>
 											<td class="px-6 py-4 whitespace-nowrap">${index + 1}</td>

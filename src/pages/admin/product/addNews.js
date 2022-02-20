@@ -2,6 +2,10 @@ import NavAdmin from "../../../components/navAdmin";
 import { add } from "../../../api/products";
 import { getAll } from "../../../api/category";
 import axios from "axios";
+import $ from 'jquery';
+import validate from 'jquery-validation';
+import toastr from 'toastr';
+import "toastr/build/toastr.min.css";
 
 const AddProduct = {
 	async print() {
@@ -36,6 +40,7 @@ const AddProduct = {
 											class="block text-sm font-medium text-gray-700">Ảnh</label>
 										<input type="file" name="image-product" id="image-product"
 											class="mt-1 py-2 px-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+											<img src="http://2.bp.blogspot.com/-MowVHfLkoZU/VhgIRyPbIoI/AAAAAAAATtI/fHk-j_MYUBs/s640/placeholder-image.jpg" id="img-preview" width="200"/>
 									</div>
 
 									<div class="col-span-6 sm:col-span-4">
@@ -74,7 +79,7 @@ const AddProduct = {
 								</div>
 							</div>
 							<div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-								<button type="submit"
+								<button
 									class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 									Thêm Mới
 								</button>
@@ -92,51 +97,98 @@ const AddProduct = {
         `;
 	},
 	afterRender() {
-		const formAdd = document.querySelector('#form-add-post');
-		var nameProduct = document.querySelector('#product-name')
-		var imageProduct = document.querySelector('#image-product')
-		var descProduct = document.querySelector('#desc-product')
-		var priceProduct = document.querySelector('#price-product')
-		var discoutProduct = document.querySelector('#discout-product')
-		var selectCategory = document.querySelector('#select-category');
-		var dataImg = ""
+		const formAddProduct = $("#form-add-post")
+		const nameProduct = document.querySelector('#product-name')
+		const imageProduct = document.querySelector('#image-product')
+		const imagePreview = document.querySelector('#img-preview')
+		const descProduct = document.querySelector('#desc-product')
+		const priceProduct = document.querySelector('#price-product')
+		const discoutProduct = document.querySelector('#discout-product')
+		const selectCategory = document.querySelector('#select-category');
+		let dataImg = ""
+		const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/hinalink/image/upload"
+		const CLOUDINARY_PRESET = "rgjdfr7q";
 
 		imageProduct.addEventListener('change', async (e) => {
-			const file = e.target.files[0];
-			const formData = new FormData();
-			const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/hinalink/image/upload"
-			formData.append('file', file);
-			formData.append('upload_preset', "rgjdfr7q")
+			imagePreview.src = URL.createObjectURL(e.target.files[0]);
+		})
 
-			const response = await axios.post(CLOUDINARY_API, formData, {
-				headers: {
-					"Content-Type": "application/form-data"
+
+		formAddProduct.validate({
+			rules: {
+				"product-name": {
+					required: true,
+					minlength: 3
+				},
+				"image-product": {
+					required: true,
+				},
+				"desc-product": {
+					required: true,
+				},
+				"price-product": {
+					required: true,
+				},
+				"discout-product": {
+					required: true,
 				}
-			})
+			},
+			messages: {
+				"product-name": {
+					required: "Không được để trống tên sản phẩm !",
+					minlength: "Nhập ít nhất 3 ký tự"
+				},
+				"image-product": {
+					required: "Không được để trống ảnh upload!",
+				},
+				"desc-product": {
+					required: "Không được để trống nội dung sản phẩm!",
+				},
+				"price-product": {
+					required: "Không được để trống giá sản phẩm!",
+				},
+				"discout-product": {
+					required: "Không được để trống giảm giá sản phẩm!",
+				}
+			},
+			submitHandler: function () {
+				async function addProduct() {
+					const file = imageProduct.files[0];
+					if (file) {
+						const formData = new FormData();
+						formData.append('file', file);
+						formData.append('upload_preset', CLOUDINARY_PRESET)
 
-			dataImg = response.data.url
-		})
+						// call api cloudinary
 
+						const { data } = await axios.post(CLOUDINARY_API, formData, {
+							headers: {
+								"Content-Type": "application/form-data"
+							}
+						});
+						dataImg = data.url;
+					}
+					var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
+					add({
+						title: nameProduct.value,
+						img: dataImg ? dataImg : "",
+						desc: descProduct.value,
+						price: priceProduct.value,
+						fakePrice: price,
+						discount: discoutProduct.value,
+						status: 1,
+						categoryId: selectCategory.value
+					})
+						.then((result) => {
+							document.location.href = "/admin/product";
+						})
+						.catch((error) => console.log(error))
 
-		formAdd.addEventListener('submit', (e) => {
-			e.preventDefault();
-
-			var price = priceProduct.value - (priceProduct.value * discoutProduct.value / 100)
-			add({
-				title: nameProduct.value,
-				img: dataImg,
-				desc: descProduct.value,
-				price: priceProduct.value,
-				fakePrice: price,
-				discount: discoutProduct.value,
-				status: 1,
-				categoryId: selectCategory.value
-			})
-				.then((result) => console.log(result.data))
-				.catch((error) => console.log(error))
-
-			alert('Thêm sản phẩm thành công')
-		})
+					alert('Thêm sản phẩm thành công')
+				}
+				addProduct();
+			}
+		});
 	}
 };
 

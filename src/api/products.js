@@ -23,3 +23,9 @@ export const update = (product) => {
     const url = `/products/${product.id}`;
     return instance.put(url, product);
 }
+
+export const getPage = (page) => {
+    const url = `/products?_page=${page}&_limit=6`;
+    return instance.get(url);
+}
+

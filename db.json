@@ -6,32 +6,32 @@
       "img": "https://i.imgur.com/5vbUxov.jpg",
       "desc": "Bo mạch chủ GIGABYTE nổi tiếng với quy trình sản xuất được giám sát kỹ lưỡng để mang đến cho người dùng sản phẩm chất lượng nhất. GIGABYTE H510M H (rev. 1.0) là dòng sản phẩm thế hệ mới nhưng giá lại vô cùng phải chăng. Hỗ trợ chip Intel thế hệ 10 mới nhất cùng những công nghệ tiên tiến. Đây đích thực là sự lựa chọn nếu bạn đang tìm cho mình một mẫu mainboard ngon - bổ - rẻ.",
       "price": "22100000",
-      "fakePrice": 2000,
+      "fakePrice": 19890000,
       "discount": "10",
       "status": "0",
-      "categoryId": 3
+      "categoryId": "1"
     },
     {
+      "id": 2,
       "title": "AXE M",
       "img": "https://i.imgur.com/y8i9C5L.jpg",
       "desc": "Bo mạch chủ GIGABYTE nổi tiếng với quy trình sản xuất được giám sát kỹ lưỡng để mang đến cho người dùng sản phẩm chất lượng nhất. GIGABYTE H510M H (rev. 1.0) là dòng sản phẩm thế hệ mới nhưng giá lại vô cùng phải chăng. Hỗ trợ chip Intel thế hệ 10 mới nhất cùng những công nghệ tiên tiến. Đây đích thực là sự lựa chọn nếu bạn đang tìm cho mình một mẫu mainboard ngon - bổ - rẻ.",
-      "price": 25000000,
-      "fakePrice": 2000,
-      "discount": 40,
-      "status": 1,
-      "categoryId": 1,
-      "id": 2
+      "price": "25000000",
+      "fakePrice": 15000000,
+      "discount": "40",
+      "status": "0",
+      "categoryId": "1"
     },
     {
+      "id": 3,
       "title": "IVY M",
       "img": "https://i.imgur.com/QUoIgt3.jpg",
       "desc": "Bo mạch chủ GIGABYTE nổi tiếng với quy trình sản xuất được giám sát kỹ lưỡng để mang đến cho người dùng sản phẩm chất lượng nhất. GIGABYTE H510M H (rev. 1.0) là dòng sản phẩm thế hệ mới nhưng giá lại vô cùng phải chăng. Hỗ trợ chip Intel thế hệ 10 mới nhất cùng những công nghệ tiên tiến. Đây đích thực là sự lựa chọn nếu bạn đang tìm cho mình một mẫu mainboard ngon - bổ - rẻ.",
-      "price": 23000000,
-      "fakePrice": 2000,
-      "discount": 30,
-      "status": 1,
-      "categoryId": 4,
-      "id": 3
+      "price": "23000000",
+      "fakePrice": 16100000,
+      "discount": "30",
+      "status": "0",
+      "categoryId": "1"
     },
     {
       "id": 5,
@@ -52,19 +52,19 @@
       "price": "10167196",
       "fakePrice": 7117037.2,
       "discount": "30",
-      "status": 1,
-      "categoryId": 1
+      "status": "0",
+      "categoryId": "1"
     },
     {
+      "id": 7,
       "title": "TEST03",
       "img": "https://i.imgur.com/5vbUxov.jpg",
       "desc": "TESSSSSSSSSSSSSS21312",
       "price": "5016489418",
       "fakePrice": 3260718121.7,
       "discount": "35",
-      "status": 1,
-      "categoryId": 2,
-      "id": 7
+      "status": "0",
+      "categoryId": "1"
     },
     {
       "id": 8,
@@ -78,26 +78,26 @@
       "categoryId": 2
     },
     {
+      "id": 9,
       "title": "TEST03",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1644227644/zgslkiti5srvt6bvi2xg.png",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333639/d7nzclmo5budnzx0eefv.jpg",
       "desc": "daxx",
       "price": "1000000",
       "fakePrice": 800000,
       "discount": "20",
-      "status": 1,
-      "categoryId": 2,
-      "id": 9
+      "status": "0",
+      "categoryId": "6"
     },
     {
+      "id": 10,
       "title": "TEST",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1644661773/po9ajiamkmhyss81cj90.jpg",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333649/rkdr3fezhjjl0zdvl33j.jpg",
       "desc": "123aaaa",
       "price": "100000",
       "fakePrice": 80000,
       "discount": "20",
-      "status": 1,
-      "categoryId": 2,
-      "id": 10
+      "status": "0",
+      "categoryId": "4"
     },
     {
       "title": "Link",
@@ -109,6 +109,39 @@
       "status": 1,
       "categoryId": "4",
       "id": 11
+    },
+    {
+      "id": 12,
+      "title": "Linh Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645291376/smnlillklrrma1jrborz.jpg",
+      "desc": "LinkCuaLinhVu",
+      "price": "2000000",
+      "fakePrice": 1000000,
+      "discount": "50",
+      "status": "0",
+      "categoryId": "1"
+    },
+    {
+      "title": "Link",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333703/ubsewq5tj2dvh6hbpade.jpg",
+      "desc": "sdasdsadada",
+      "price": "5565991515",
+      "fakePrice": 4452793212,
+      "discount": "20",
+      "status": 1,
+      "categoryId": "4",
+      "id": 13
+    },
+    {
+      "title": "Link Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
+      "desc": "sdasdsadada",
+      "price": "123456879",
+      "fakePrice": 86419815.3,
+      "discount": "30",
+      "status": 1,
+      "categoryId": "2",
+      "id": 14
     }
   ],
   "categorys": [
@@ -131,6 +164,10 @@
     {
       "name": "Danh Mục Test",
       "id": 5
+    },
+    {
+      "id": 6,
+      "name": "Danh Mục Mới Update"
     }
   ],
   "users": [

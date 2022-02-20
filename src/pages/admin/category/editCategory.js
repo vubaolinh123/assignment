@@ -1,5 +1,9 @@
 import { update, get } from "../../../api/category"
 import NavAdmin from "../../../components/navAdmin";
+import axios from "axios";
+import $ from 'jquery';
+import validate from 'jquery-validation';
+
 
 const EditCategory = {
 	async print(id) {
@@ -50,22 +54,38 @@ const EditCategory = {
         `;
 	},
 	afterRender(id) {
-		const formAdd = document.querySelector('#form-add-post');
-		formAdd.addEventListener('submit', (e) => {
-			e.preventDefault();
-			var nameCategory = document.querySelector('#category-name')
+		const formAddCate = $("#form-add-post")
+		var nameCategory = document.querySelector('#category-name')
 
-			update({
-				id: id,
-				name: nameCategory.value,
-			})
-				.then(() => {
-					document.location.href = "/admin/category";
-				})
-				.catch((error) => console.log(error))
+		formAddCate.validate({
+			rules: {
+				"category-name": {
+					required: true,
+					minlength: 3
+				},
+			},
+			messages: {
+				"category-name": {
+					required: "Không được để trống tên danh mục!",
+					minlength: "Nhập ít nhất 3 ký tự"
+				},
+			},
+			submitHandler: function () {
+				async function editCate() {
+					update({
+						id: id,
+						name: nameCategory.value,
+					})
+						.then(() => {
+							document.location.href = "/admin/category";
+						})
+						.catch((error) => console.log(error))
+				}
+				editCate();
+			}
+		});
 
-			alert('Cập nhật sản phẩm thành công')
-		})
+
 	}
 };
 

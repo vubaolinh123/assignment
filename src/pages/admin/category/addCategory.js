@@ -1,5 +1,9 @@
 import NavAdmin from "../../../components/navAdmin";
 import { add } from "../../../api/category";
+import axios from "axios";
+import $ from 'jquery';
+import validate from 'jquery-validation';
+
 
 const AddCategory = {
 	print() {
@@ -32,7 +36,7 @@ const AddCategory = {
 								</div>
 							</div>
 							<div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-								<button type="submit"
+								<button 
 									class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 									Thêm Mới
 								</button>
@@ -50,19 +54,34 @@ const AddCategory = {
         `;
 	},
 	afterRender() {
-		const formAdd = document.querySelector('#form-add-post');
-		formAdd.addEventListener('submit', (e) => {
-			e.preventDefault();
-			var nameCategory = document.querySelector('#category-name')
+		const formAddCate = $("#form-add-post")
+		var nameCategory = document.querySelector('#category-name')
 
-			add({
-				name: nameCategory.value,
-			})
-				.then(() => document.location.href = "/admin/category")
-				.catch((error) => console.log(error))
+		formAddCate.validate({
+			rules: {
+				"category-name": {
+					required: true,
+					minlength: 3
+				},
+			},
+			messages: {
+				"category-name": {
+					required: "Không được để trống tên danh mục!",
+					minlength: "Nhập ít nhất 3 ký tự"
+				},
+			},
+			submitHandler: function () {
+				async function addCate() {
+					add({
+						name: nameCategory.value,
+					})
+						.then(() => document.location.href = "/admin/category")
+						.catch((error) => console.log(error))
+				}
+				addCate();
+			}
+		});
 
-			alert('Thêm danh mục mới thành công')
-		})
 	}
 };
 

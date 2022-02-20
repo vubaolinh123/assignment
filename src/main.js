@@ -1,4 +1,5 @@
 import Navigo from "navigo";
+// import express from "express";
 import contactPage from "./pages/contact";
 import DashBoard from "./pages/admin/dashboard";
 import detailProduct from "./pages/detailProduct";
@@ -14,6 +15,7 @@ import indexCategory from "./pages/admin/category/indexCategory";
 import AddCategory from "./pages/admin/category/addCategory";
 import EditCategory from "./pages/admin/category/editCategory";
 import ProInTheCate from "./pages/ProInTheCate";
+import OrderSuccess from "./pages/OrderSuccess";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -21,6 +23,12 @@ const render = async (content, id) => {
 	document.querySelector("#app").innerHTML = await content.print(id);
 	if (content.afterRender) content.afterRender(id);
 };
+
+// const routers = express.Router()
+
+// routers.render = (req, res) => {
+// 	res.jsonp({ data: res.locals.data })
+// }
 
 
 router.on("/admin/*", () => { }, {
@@ -70,6 +78,10 @@ router.on({
 	},
 	"/checkout": () => {
 		render(CheckOut);
+	},
+
+	"/ordersuccess": () => {
+		render(OrderSuccess);
 	},
 
 	"/productCate/:id": (value) => {

@@ -1,7 +1,7 @@
 import Banner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/header";
-import { decreaseQty, increaseQty, removeItemInCart } from "../utils/cart";
+import { decInQty, removeItemInCart } from "../utils/cart";
 import { reRender } from "../utils/reRedner";
 import toastr from 'toastr';
 import { $ } from "../utils/selector";
@@ -41,6 +41,7 @@ const CartPage = {
                         <tr id="sanphamtt">
 							<td class="border border-[#f0f0f0] border-x-[1px] p-4 text-center">
 								<div class="">
+								<button type="button" hidden class="btn quantityProduct"></button>
 									<a href="" class=""><img src="${item.img}" alt="" width="100"
 											class="align-middle inline-block"></a>
 								</div>
@@ -75,9 +76,6 @@ const CartPage = {
 		<button type="submit"
 			class="text-white bg-red-500 inline-block rounded font-bold text-2xl px-4 py-3"><a href="/#/checkout">Thanh
 				Toán</a></button>
-		<button type="submit"
-			class="text-white bg-red-500 inline-block rounded font-bold text-2xl px-4 py-3">Cập
-			Nhật</button>
 	</div>
 			</form >
 		</div >
@@ -99,26 +97,29 @@ const CartPage = {
 		})
 		renderTongTien.innerHTML = `${numberFormat.format(tongTien)}`;
 
-
-		$(".btn").forEach(btn => {
-			const id = btn.dataset.id;
-			btn.addEventListener('click', function () {
-				removeItemInCart(id, () => {
-					reRender(CartPage, "#app");
-					toastr.success("Bạn đã xóa thành công")
+		if ($(".btn")) {
+			console.log($(".btn"));
+			$(".btn").forEach(btn => {
+				const id = btn.dataset.id;
+				btn.addEventListener('click', function () {
+					removeItemInCart(id, () => {
+						reRender(CartPage, "#app");
+						toastr.success("Bạn đã xóa thành công")
+					})
 				})
 			})
-		})
+		}
 
-		const quantityProduct = $(".quantityProduct");
+		// const quantityProduct = $(".quantityProduct");
 		// console.log(quantityProduct.length);
-
-		quantityProduct.forEach((quantity) => {
-			quantity.addEventListener("change", () => {
-				const id = quantity.dataset.id;
-				decreaseQty(id, quantity.value, () => reRender(CartPage, "#app"));
+		if ($(".quantityProduct")) {
+			$(".quantityProduct").forEach((quantity) => {
+				quantity.addEventListener("change", () => {
+					const id = quantity.dataset.id;
+					decInQty(id, quantity.value, () => reRender(CartPage, "#app"));
+				})
 			})
-		})
+		}
 
 		// END
 	}
