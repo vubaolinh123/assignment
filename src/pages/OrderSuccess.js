@@ -1,6 +1,8 @@
 import Banner from "../components/banner";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import { add, getAll } from "../api/infoOrder"
+import { add as addDetailOrder } from "../api/detailOrder"
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
     style: 'currency',
@@ -39,10 +41,16 @@ const OrderSuccess = {
         `
     },
 
-    afterRender() {
+    async afterRender() {
         let cart = [];
+        let info = [];
         var tongTien = 0;
         const orderSuccess = document.querySelector(".orderSuccess")
+
+        if (localStorage.getItem('infoOrder')) {
+            info = JSON.parse(localStorage.getItem('infoOrder'))
+        }
+
         if (localStorage.getItem('cart')) {
             cart = JSON.parse(localStorage.getItem('cart'));
             const renderTongTien = document.querySelector(".total")
@@ -51,10 +59,42 @@ const OrderSuccess = {
             });
             renderTongTien.innerHTML = `${numberFormat.format(tongTien)}`;
         }
-        orderSuccess.addEventListener("click", () => {
+        orderSuccess.addEventListener("click", async () => {
+            await add({
+                fullname: info[0].fullname,
+                email: info[0].email,
+                address: info[0].address,
+                phone: info[0].phone,
+                status: 0,
+                total: tongTien,
+            });
+            const { data } = await getAll("_limit=1&_sort=id&_order=desc");
+            const idOrder = data[0].id;
+
+            let cartBill = []
+            if (localStorage.getItem('cart')) {
+                cartBill = JSON.parse(localStorage.getItem('cart'));
+                cartBill.forEach((item, index) => {
+                    console.log(item);
+                    addDetailOrder({
+                        infoOrderId: idOrder,
+                        categoryId: item.categoryId,
+                        title: item.title,
+                        img: item.img,
+                        desc: item.desc,
+                        price: item.fakePrice,
+                        quantity: item.quantity,
+                        total: item.fakePrice * item.quantity,
+                    })
+                })
+            }
+
             localStorage.removeItem("infoOrder");
             localStorage.removeItem("cart");
-            document.location.href = "/";
+            setTimeout(() => {
+                document.location.href = "/";
+            }, 2000)
+
         })
 
 

@@ -1,7 +1,7 @@
 import instance from "./config"
 
 export const getAll = (param) => {
-    const url = `/products?${param}`;
+    const url = `/products?${param || ""}`;
     return instance.get(url)
 }
 

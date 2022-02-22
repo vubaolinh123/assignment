@@ -17,6 +17,8 @@ import EditCategory from "./pages/admin/category/editCategory";
 import ProInTheCate from "./pages/ProInTheCate";
 import OrderSuccess from "./pages/OrderSuccess";
 import PageSearch from "./pages/PageSearch";
+import indexBill from "./pages/admin/bill/indexBill";
+import DetailBill from "./pages/admin/bill/detailBill";
 
 const router = new Navigo("/", { linksSelector: "a", hash: true });
 
@@ -121,6 +123,17 @@ router.on({
 	"/admin/category/:id/edit": (value) => {
 		var id = value.data.id;
 		render(EditCategory, id);
+	},
+
+	// BILLING
+
+	"/admin/bill": () => {
+		render(indexBill);
+	},
+
+	"/admin/:id/detailBill": (value) => {
+		var id = value.data.id;
+		render(DetailBill, id);
 	},
 
 });
