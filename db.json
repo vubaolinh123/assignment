@@ -210,18 +210,27 @@
   ],
   "infoOrder": [
     {
-      "id": 1,
+      "id": 3,
       "fullname": "Bảo Linh",
       "email": "duyphi456@gmail.com",
       "address": "Số Nhà 3, Ngõ 3, Tổ Dân Phố 3",
       "phone": "0347383594",
+      "status": 2,
+      "total": 4539213027.3
+    },
+    {
+      "id": 4,
+      "fullname": "Bảo Linhssss",
+      "email": "duyphi456@gmail.com",
+      "address": "Đức Diễn",
+      "phone": "03473835945",
       "status": 1,
-      "total": 86419815.3
+      "total": 1240000
     }
   ],
   "detailOrder": [
     {
-      "infoOrderId": 1,
+      "infoOrderId": 3,
       "categoryId": 2,
       "title": "Link Vu",
       "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
@@ -229,7 +238,40 @@
       "price": 86419815.3,
       "quantity": 1,
       "total": 86419815.3,
-      "id": 1
+      "id": 4
+    },
+    {
+      "infoOrderId": 3,
+      "categoryId": 4,
+      "title": "Link",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333703/ubsewq5tj2dvh6hbpade.jpg",
+      "desc": "sdasdsadada",
+      "price": 4452793212,
+      "quantity": 1,
+      "total": 4452793212,
+      "id": 5
+    },
+    {
+      "infoOrderId": 4,
+      "categoryId": 1,
+      "title": "Linh Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645291376/smnlillklrrma1jrborz.jpg",
+      "desc": "LinkCuaLinhVu",
+      "price": 1000000,
+      "quantity": 1,
+      "total": 1000000,
+      "id": 6
+    },
+    {
+      "infoOrderId": 4,
+      "categoryId": 4,
+      "title": "TEST",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333649/rkdr3fezhjjl0zdvl33j.jpg",
+      "desc": "123aaaa",
+      "price": 80000,
+      "quantity": 3,
+      "total": 240000,
+      "id": 7
     }
   ]
 }

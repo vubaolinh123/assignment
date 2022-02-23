@@ -2,6 +2,8 @@ import { getAll, update, remove } from "../../../api/infoOrder"
 import { getAll as getAllDetailOrder, remove as removeDetailOrder } from "../../../api/detailOrder"
 import NavAdmin from "../../../components/navAdmin";
 import { reRender } from "../../../utils/reRedner";
+// import $ from "jquery"
+// import dt from "datatables.net"
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
 	style: 'currency',
@@ -27,7 +29,7 @@ const indexBill = {
 					<div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
 						<div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
 							<div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-								<table class="min-w-full divide-y divide-gray-200">
+								<table class="min-w-full divide-y divide-gray-200" id="table_id" >
 									<thead class="bg-gray-50">
 										<tr>
 											<th scope="col"
@@ -105,6 +107,10 @@ const indexBill = {
         `;
 	},
 	async afterRender() {
+		// $(document).ready(function () {
+		// 	$('#table_id').DataTable();
+		// });
+
 		const selectStatus = document.querySelectorAll(".selectStatus");
 		const { data } = await getAll();
 		const detail = await getAllDetailOrder();
@@ -113,27 +119,31 @@ const indexBill = {
 
 		selectStatus.forEach((item) => {
 			item.addEventListener("change", (e) => {
-				const idOrder = item.value.slice(0, -2);
+				const idOrder = +item.value.slice(0, -2);
 				const lengthValue = item.value.length - 1;
 				const valueStatus = item.value.slice(lengthValue);
-				update({
-					id: idOrder,
-					fullname: data[0].fullname,
-					email: data[0].email,
-					address: data[0].address,
-					phone: data[0].phone,
-					status: +valueStatus,
-					total: data[0].total,
-				}).then(() => {
-					reRender(indexBill, "#app");
+				data.forEach((item, index) => {
+					if (item.id == idOrder) {
+						update({
+							id: idOrder,
+							fullname: item.fullname,
+							email: item.email,
+							address: item.address,
+							phone: item.phone,
+							status: +valueStatus,
+							total: item.total,
+						}).then(() => {
+							reRender(indexBill, "#app");
+						})
+					}
 				})
+
 			})
 		})
 
 		selectStatus.forEach((item, index) => {
 			const lengthValue = item.value.length - 1;
 			const valueStatus = item.value.slice(lengthValue);
-			console.log(valueStatus);
 			if (valueStatus == 1) {
 				selectStatus[index].style.backgroundColor = "#0bc40b"
 				selectStatus[index].style.color = "white"
