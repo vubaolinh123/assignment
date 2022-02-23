@@ -22,7 +22,6 @@ const DetailBill = {
 			</div>
 		</header>
 		<main>
-       
                         <div class="max-w-screen-xl mx-auto py-6 ">
                                         <div class="flex flex-col">
                                             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

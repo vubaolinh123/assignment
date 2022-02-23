@@ -1,5 +1,7 @@
-import { getAll } from "../../../api/infoOrder"
+import { getAll, update, remove } from "../../../api/infoOrder"
+import { getAll as getAllDetailOrder, remove as removeDetailOrder } from "../../../api/detailOrder"
 import NavAdmin from "../../../components/navAdmin";
+import { reRender } from "../../../utils/reRedner";
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
 	style: 'currency',
@@ -75,22 +77,20 @@ const indexBill = {
 											<td class="px-6 py-4 whitespace-nowrap">${infoOrder.email}</td>
 											<td class="px-6 py-4 whitespace-nowrap ">${infoOrder.address}</td>
 											<td class="px-6 py-4 whitespace-nowrap">${infoOrder.phone}</td>
-											<td class="px-6 py-4 whitespace-nowrap">${infoOrder.total}</td>
+											<td class="px-6 py-4 whitespace-nowrap">${numberFormat.format(infoOrder.total)}</td>
 											<td class="px-6 py-4 whitespace-nowrap">
 												<select name=""  class="bg-blue-100 selectStatus">
-												${infoOrder.status == 0 ? `<option value="0" class="bg-red-500">Chờ Xác Nhận</option>
-													<option value="1" class="bg-green-500" data-id="${infoOrder.id}">Hoàn Tất</option>` : `<option value="1" class="bg-green-500">Hoàn Tất</option>`}
-												</select>
-											</td>
+												${infoOrder.status == 0 ? `<option value="0" class="bg-blue-400">Chờ Xác Nhận</option>
+													<option value="${infoOrder.id}_1" class="bg-green-500">Hoàn Tất</option> <option value="${infoOrder.id}_2" class="bg-red-500">Hủy Đơn </option>` : infoOrder.status == 1 ? `<option value="${infoOrder.id}_1" class="bg-green-500">Hoàn Tất</option>` : `<option value="${infoOrder.id}_2" class="bg-red-500">Hủy Đơn</option>`}
+												</select >
+											</td >
 											<td class="px-6 py-4 whitespace-nowrap"><a href="/admin/${infoOrder.id}/detailBill">View</a></td>
 											<td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-												<a href="/admin/category/${infoOrder.id}/edit"
-													class="text-indigo-600 hover:text-indigo-900">Edit</a>
-												<button 
+												<button data-id=${infoOrder.id}
 													class="btn-remove btn text-red-600 hover:text-red-900">Delete</button>
 											</td>
-										</tr>
-										`;
+										</tr >
+	`;
 		}).join("")}
 									</tbody>
 								</table>
@@ -104,15 +104,64 @@ const indexBill = {
             
         `;
 	},
-	afterRender() {
+	async afterRender() {
 		const selectStatus = document.querySelectorAll(".selectStatus");
+		const { data } = await getAll();
+		const detail = await getAllDetailOrder();
+		const dataDetailOrder = detail.data;
+
+
 		selectStatus.forEach((item) => {
 			item.addEventListener("change", (e) => {
-				const idOrder = item.dataset.id;
-				console.log(idOrder);
-				console.log(item.value);
+				const idOrder = item.value.slice(0, -2);
+				const lengthValue = item.value.length - 1;
+				const valueStatus = item.value.slice(lengthValue);
+				update({
+					id: idOrder,
+					fullname: data[0].fullname,
+					email: data[0].email,
+					address: data[0].address,
+					phone: data[0].phone,
+					status: +valueStatus,
+					total: data[0].total,
+				}).then(() => {
+					reRender(indexBill, "#app");
+				})
 			})
 		})
+
+		selectStatus.forEach((item, index) => {
+			const lengthValue = item.value.length - 1;
+			const valueStatus = item.value.slice(lengthValue);
+			console.log(valueStatus);
+			if (valueStatus == 1) {
+				selectStatus[index].style.backgroundColor = "#0bc40b"
+				selectStatus[index].style.color = "white"
+			} else if (valueStatus == 2) {
+				selectStatus[index].style.backgroundColor = "red"
+				selectStatus[index].style.color = "white"
+			}
+
+		})
+
+		const buttons = document.querySelectorAll('.btn');
+		buttons.forEach(button => {
+			const id = button.dataset.id;
+			button.addEventListener("click", () => {
+				const confirm = window.confirm("Bạn có chắc muốn xóa không ?")
+				if (confirm) {
+					dataDetailOrder.forEach((item) => {
+						if (item.infoOrderId == id) {
+							removeDetailOrder(item.id);
+						}
+					});
+					remove(id).then(() => {
+						reRender(indexBill, "#app")
+					})
+				}
+			})
+		})
+
 
 	}
 };

@@ -210,68 +210,26 @@
   ],
   "infoOrder": [
     {
-      "fullname": "LinhS",
-      "email": "vubaolinh1111@gmail.com",
-      "address": "Đức Diễn Hà Nội",
-      "phone": "03473835945",
-      "status": 0,
-      "total": 40800000,
-      "id": 1
-    },
-    {
+      "id": 1,
       "fullname": "Bảo Linh",
-      "email": "vubaolinh1111@gmail.com",
-      "address": "Đức Diễn Từ Liêm Hà Nội",
+      "email": "duyphi456@gmail.com",
+      "address": "Số Nhà 3, Ngõ 3, Tổ Dân Phố 3",
       "phone": "0347383594",
-      "status": 0,
-      "total": 3340718121.7,
-      "id": 2
+      "status": 1,
+      "total": 86419815.3
     }
   ],
   "detailOrder": [
     {
       "infoOrderId": 1,
-      "categoryId": 6,
-      "title": "TEST03",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333639/d7nzclmo5budnzx0eefv.jpg",
-      "desc": "daxx",
-      "price": 800000,
-      "quantity": 1,
-      "total": 800000,
-      "id": 1
-    },
-    {
-      "infoOrderId": 1,
-      "categoryId": 3,
-      "title": "Test01",
-      "img": "https://i.imgur.com/5vbUxov.jpg",
-      "desc": "TEST1231231231237898788S8SS",
-      "price": 40000000,
-      "quantity": 1,
-      "total": 40000000,
-      "id": 2
-    },
-    {
-      "infoOrderId": 2,
       "categoryId": 2,
-      "title": "TEST03",
-      "img": "https://i.imgur.com/5vbUxov.jpg",
-      "desc": "TESSS NỘI DUNG ABCCCCCC",
-      "price": 80000000,
+      "title": "Link Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
+      "desc": "sdasdsadada",
+      "price": 86419815.3,
       "quantity": 1,
-      "total": 80000000,
-      "id": 3
-    },
-    {
-      "infoOrderId": 2,
-      "categoryId": 1,
-      "title": "TEST03",
-      "img": "https://i.imgur.com/5vbUxov.jpg",
-      "desc": "TESSSSSSSSSSSSSS21312",
-      "price": 3260718121.7,
-      "quantity": 1,
-      "total": 3260718121.7,
-      "id": 4
+      "total": 86419815.3,
+      "id": 1
     }
   ]
 }

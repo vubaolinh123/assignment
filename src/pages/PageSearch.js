@@ -8,22 +8,22 @@ import { getAll, Search } from "../api/products"
 import { getAll as dataCate } from '../api/category'
 
 const numberFormat = new Intl.NumberFormat('vi-VN', {
-    style: 'currency',
-    currency: 'VND',
+	style: 'currency',
+	currency: 'VND',
 });
 
 const PageSearch = {
-    async print() {
-        let dataKeyword = []
-        if (localStorage.getItem('keyword')) {
-            dataKeyword = JSON.parse(localStorage.getItem('keyword'))
-        }
-        console.log(dataKeyword);
-        const { data } = await getAll();
-        const Cate = await dataCate();
-        console.log(dataKeyword[0].keyword);
-        const dataSearch = await Search(dataKeyword[0].keyword);
-        return /*html*/ ` 
+	async print() {
+		let dataKeyword = []
+		if (localStorage.getItem('keyword')) {
+			dataKeyword = JSON.parse(localStorage.getItem('keyword'))
+		}
+
+		const { data } = await getAll();
+		const Cate = await dataCate();
+		console.log(dataKeyword[0].keyword);
+		const dataSearch = await Search(dataKeyword[0].keyword);
+		return /*html*/ ` 
 			<header id="header" class="grid grid-cols-8 gap-5 bg-[#f1f0f1] py-3 px-2 sticky top-0 z-50 border  border-gray-300 border-y-0">${Header.print()}</header>
 			<div class="" id="banner">${Banner.printf()}</div>
 			<main class="grid grid-cols-8 gap-3 my-2 relative">
@@ -33,11 +33,11 @@ const PageSearch = {
 						Các Loại Sản Phẩm</span>
 					<ul class="main-menu px-4">
 					${Cate.data.map((cate) => {
-            return /*html*/ `
+			return /*html*/ `
 							<li class="my-5"><a href="#" class=""><i class="fas fa-chevron-right text-red-600 mr-2"></i><a href="/productCate/${cate.id}">${cate.name}</a>
 							</a></li>
 						`
-        }).join("")}
+		}).join("")}
 					</ul>
 				</div>
 				<div class="border border-gray-300 bg-gray-100 danhmuc">
@@ -62,12 +62,12 @@ const PageSearch = {
 				</div>
 				<div class="py-3 grid grid-cols-3 gap-3">
 						${dataSearch.data.map((product) => {
-            if (product.status == 1) {
-                var status = "Còn Hàng"
-            } else {
-                status = "Hết Hàng"
-            }
-            return  /*html*/`
+			if (product.status == 1) {
+				var status = "Còn Hàng"
+			} else {
+				status = "Hết Hàng"
+			}
+			return  /*html*/`
 									<div class="sanpham border border-gray-400 text-center">
 										<a href="/products/${product.id}"><img src="${product.img}" /></a>
 										<a href="/products/${product.id}" class="block my-3"><span class="name-sp text-xl">${product.title}</span></a>
@@ -82,7 +82,7 @@ const PageSearch = {
 												class="fas fa-chevron-circle-right "></i></a>
 									</div>
 								`
-        }).join("")}
+		}).join("")}
 					</div>
                     </div>
 			</main>
@@ -91,32 +91,32 @@ const PageSearch = {
 			</ul>
 			<footer class="bg-[#272f54] text-center" id="footer">${Footer.printf()}</footer>
 		`;
-    },
-    async afterRender() {
+	},
+	async afterRender() {
 
-        // const { data } = await Search(keyword.value);
-        // console.log(data);
-        let dataKeywords = []
-        if (localStorage.getItem('keyword')) {
-            dataKeywords = JSON.parse(localStorage.getItem('keyword'))
-        }
+		// const { data } = await Search(keyword.value);
+		// console.log(data);
+		let dataKeywords = []
+		if (localStorage.getItem('keyword')) {
+			dataKeywords = JSON.parse(localStorage.getItem('keyword'))
+		}
 
-        const keyword = document.querySelector("#search");
-        const btnSearch = document.querySelector("#btnSearch");
-        var dataKeyword = ""
-        var keywordSto = []
-        btnSearch.addEventListener("click", (e) => {
-            dataKeyword = keyword.value;
-            const keywordData = {
-                keyword: dataKeyword,
-            }
-            keywordSto.push(keywordData)
-            localStorage.setItem('keyword', JSON.stringify(keywordSto));
-            reRender(PageSearch, "#app");
-        });
-        Header.afterRender();
+		const keyword = document.querySelector("#search");
+		const btnSearch = document.querySelector("#btnSearch");
+		var dataKeyword = ""
+		var keywordSto = []
+		btnSearch.addEventListener("click", (e) => {
+			dataKeyword = keyword.value;
+			const keywordData = {
+				keyword: dataKeyword,
+			}
+			keywordSto.push(keywordData)
+			localStorage.setItem('keyword', JSON.stringify(keywordSto));
+			reRender(PageSearch, "#app");
+		});
+		Header.afterRender();
 
-    }
+	}
 };
 
 export default PageSearch;
