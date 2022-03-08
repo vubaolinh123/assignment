@@ -32,7 +32,7 @@ const render = async (content, id) => {
 // routers.render = (req, res) => {
 // 	res.jsonp({ data: res.locals.data })
 // }
-
+//
 
 router.on("/admin/*", () => { }, {
 	before(done, match) {

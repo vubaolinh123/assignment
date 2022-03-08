@@ -89,9 +89,9 @@ const OrderSuccess = {
                 })
             }
 
-            localStorage.removeItem("infoOrder");
-            localStorage.removeItem("cart");
             setTimeout(() => {
+                localStorage.removeItem("infoOrder");
+                localStorage.removeItem("cart");
                 document.location.href = "/";
             }, 2000)
 

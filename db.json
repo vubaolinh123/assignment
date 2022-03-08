@@ -210,35 +210,66 @@
   ],
   "infoOrder": [
     {
-      "id": 3,
-      "fullname": "Bảo Linh",
-      "email": "duyphi456@gmail.com",
-      "address": "Số Nhà 3, Ngõ 3, Tổ Dân Phố 3",
-      "phone": "0347383594",
-      "status": 2,
-      "total": 4539213027.3
-    },
-    {
-      "id": 4,
-      "fullname": "Bảo Linhssss",
-      "email": "duyphi456@gmail.com",
-      "address": "Đức Diễn",
+      "id": 1,
+      "fullname": "TEST02",
+      "email": "vubaolinh1111@gmail.com",
+      "address": "Đức Diễn Hà Nội VN",
       "phone": "03473835945",
       "status": 1,
-      "total": 1240000
+      "total": 332839630.6
+    },
+    {
+      "id": 2,
+      "fullname": "Bảo Linh",
+      "email": "duyphi456@gmail.com",
+      "address": "Đức Diễn",
+      "phone": "0347383594",
+      "status": 2,
+      "total": 4452793212
+    },
+    {
+      "id": 3,
+      "fullname": "Vũ Linh",
+      "email": "duyphi456@gmail.com",
+      "address": "Số Nhà 3, Ngõ 3, Tổ Dân Phố 3",
+      "phone": "03473835945",
+      "status": 1,
+      "total": 13358379636
     }
   ],
   "detailOrder": [
     {
-      "infoOrderId": 3,
+      "infoOrderId": 1,
       "categoryId": 2,
       "title": "Link Vu",
       "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
       "desc": "sdasdsadada",
       "price": 86419815.3,
+      "quantity": 2,
+      "total": 172839630.6,
+      "id": 1
+    },
+    {
+      "infoOrderId": 1,
+      "categoryId": 4,
+      "title": "Link",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645157906/bvmiufr7rzs2wsetkiav.jpg",
+      "desc": "aaaa",
+      "price": 80000000,
+      "quantity": 2,
+      "total": 160000000,
+      "id": 2
+    },
+    {
+      "infoOrderId": 2,
+      "categoryId": 4,
+      "title": "Link",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333703/ubsewq5tj2dvh6hbpade.jpg",
+      "desc": "sdasdsadada",
+      "price": 4452793212,
       "quantity": 1,
-      "total": 86419815.3,
-      "id": 4
+      "total": 4452793212,
+      "id": 3
     },
     {
       "infoOrderId": 3,
@@ -247,31 +278,9 @@
       "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333703/ubsewq5tj2dvh6hbpade.jpg",
       "desc": "sdasdsadada",
       "price": 4452793212,
-      "quantity": 1,
-      "total": 4452793212,
-      "id": 5
-    },
-    {
-      "infoOrderId": 4,
-      "categoryId": 1,
-      "title": "Linh Vu",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645291376/smnlillklrrma1jrborz.jpg",
-      "desc": "LinkCuaLinhVu",
-      "price": 1000000,
-      "quantity": 1,
-      "total": 1000000,
-      "id": 6
-    },
-    {
-      "infoOrderId": 4,
-      "categoryId": 4,
-      "title": "TEST",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333649/rkdr3fezhjjl0zdvl33j.jpg",
-      "desc": "123aaaa",
-      "price": 80000,
       "quantity": 3,
-      "total": 240000,
-      "id": 7
+      "total": 13358379636,
+      "id": 4
     }
   ]
 }

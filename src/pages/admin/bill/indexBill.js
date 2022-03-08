@@ -166,7 +166,7 @@ const indexBill = {
 						}
 					});
 					remove(id).then(() => {
-						reRender(indexBill, "#app")
+						reRender(indexBill, "#app");
 					})
 				}
 			})
