@@ -1,17 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "title": "VENTUS M",
-      "img": "https://i.imgur.com/5vbUxov.jpg",
-      "desc": "Bo mạch chủ GIGABYTE nổi tiếng với quy trình sản xuất được giám sát kỹ lưỡng để mang đến cho người dùng sản phẩm chất lượng nhất. GIGABYTE H510M H (rev. 1.0) là dòng sản phẩm thế hệ mới nhưng giá lại vô cùng phải chăng. Hỗ trợ chip Intel thế hệ 10 mới nhất cùng những công nghệ tiên tiến. Đây đích thực là sự lựa chọn nếu bạn đang tìm cho mình một mẫu mainboard ngon - bổ - rẻ.",
-      "price": "22100000",
-      "fakePrice": 19890000,
-      "discount": "10",
-      "status": "0",
-      "categoryId": 1
-    },
-    {
       "id": 2,
       "title": "AXE M",
       "img": "https://i.imgur.com/y8i9C5L.jpg",
@@ -142,17 +131,6 @@
       "status": 1,
       "categoryId": 2,
       "id": 14
-    },
-    {
-      "title": "Gaming",
-      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645375683/ex7ff3x3gtfqt9dwig4h.jpg",
-      "desc": "hiiiii",
-      "price": "500000",
-      "fakePrice": 400000,
-      "discount": "20",
-      "status": 1,
-      "categoryId": 7,
-      "id": 15
     }
   ],
   "categorys": [
@@ -235,6 +213,24 @@
       "phone": "03473835945",
       "status": 1,
       "total": 13358379636
+    },
+    {
+      "id": 4,
+      "fullname": "Bảo Linh",
+      "email": "duyphi456@gmail.com",
+      "address": "Đức Diễn",
+      "phone": "0347383594",
+      "status": 2,
+      "total": 259259445.89999998
+    },
+    {
+      "id": 5,
+      "fullname": "Bảo Linh",
+      "email": "duyphi456@gmail.com",
+      "address": "Đức Diễn",
+      "phone": "0347383594",
+      "status": 1,
+      "total": 259259445.89999998
     }
   ],
   "detailOrder": [
@@ -281,6 +277,28 @@
       "quantity": 3,
       "total": 13358379636,
       "id": 4
+    },
+    {
+      "infoOrderId": 4,
+      "categoryId": 2,
+      "title": "Link Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
+      "desc": "sdasdsadada",
+      "price": 86419815.3,
+      "quantity": "3",
+      "total": 259259445.89999998,
+      "id": 5
+    },
+    {
+      "infoOrderId": 5,
+      "categoryId": 2,
+      "title": "Link Vu",
+      "img": "http://res.cloudinary.com/hinalink/image/upload/v1645333720/rjlkwjvacybh2h3oesgt.jpg",
+      "desc": "sdasdsadada",
+      "price": 86419815.3,
+      "quantity": "3",
+      "total": 259259445.89999998,
+      "id": 6
     }
   ]
 }
